@@ -83,7 +83,6 @@ cosine_similarities = linear_kernel(matrix,matrix)
 project_title = df['id']
 
 indices = pd.Series(df.index, index=df['id'])
-print("indices "+indices)
 
 def project_recommend(title):
 

@@ -68,7 +68,7 @@ $title="";
 
                  <li>
                     <a href="../logout.php">
-                        <i class="pe-7s-bell"></i>
+                        <i class="pe-7s-power"></i>
                          <p style="font-size:18px">Log Out</p>
                     </a>
                 </li>

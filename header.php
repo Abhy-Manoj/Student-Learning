@@ -26,12 +26,12 @@ session_start();
 <!--<div class="se-pre-con"></div>-->
 <div class="theme-layout">
 	<div class="responsive-header">
-		<nav id="menu" class="res-menu">
+		<!--<nav id="menu" class="res-menu">-->
 			<ul>
 				<li><span>Home</span>
 				</li>
             </ul>
-		</nav>
+		<!--</nav>-->
 		
 	</div><!-- responsive header -->
 	

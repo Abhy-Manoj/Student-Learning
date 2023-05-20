@@ -56,7 +56,7 @@ include("header.php");
 							<?php
 								if(isset($_POST['submit']))
 								{
-									echo "zcc";
+									//echo "zcc";
 								$title=$_POST['title'];
 								$keywords=$_POST['keywords'];
 								$abstract=$_POST['abstract'];

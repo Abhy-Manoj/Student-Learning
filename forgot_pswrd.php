@@ -74,7 +74,7 @@ if(isset($_POST['submit']))
 	$email=$row['email'];
 	$subject="Welcome To Student Learning";
 	$title="Your Password";
-	$msg="Greetings from Student Learning. \n Your Username is: $row[username] \n Your password is: $row[password]";
+	$msg="Greetings from Student Learning ASIET. \nYour Username is: $row[username] \nYour password is: $row[password]";
 	include('mail.php');
 }
 

@@ -53,7 +53,7 @@ include("header.php");
 							<div class="col-lg-6">
 								<div class="central-meta">
 									<div class="editing-info">
-										<h5 class="f-title"><i class="ti-info-alt"></i> project Post</h5>
+										<h5 class="f-title"><i class="ti-info-alt"></i> Edit Project</h5>
 
 										<form method="post" enctype="multipart/form-data">
 											<div class="form-group">	

@@ -2,154 +2,269 @@
 include("connection.php");
 include("header.php");
 
-$sel=mysqli_query($con,"SELECT * FROM `student` WHERE `id`='$_SESSION[uid]'");
-$row=mysqli_fetch_array($sel);
-
+$sel = mysqli_query($con, "SELECT * FROM `student` WHERE `id`='$_SESSION[uid]'");
+$row = mysqli_fetch_array($sel);
 
 ?>
-	
-	<?php
-	include("profile-head.php");
-	$sel1=mysqli_query($con,"SELECT * FROM `bio` WHERE `uid`='$_SESSION[uid]'");
-$row1=mysqli_fetch_array($sel1);
-	?>
-		
-	<section>
-		<div class="gap gray-bg">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="row" id="page-contents">
-							<div class="col-lg-3">
-								<aside class="sidebar static">
-	<div class="widget">
-	<h4 class="widget-title">Friends</h4>
-	<form method="post">
-		<div class="form-group">	
-		  <input type="text" id="input" required="required" name="name"/>
-		  <label class="control-label" for="input">Name</label><i class="mtrl-select"></i>
-		</div>
-		<div class="form-group">	
-		  <select name="dept">
-			<?php
-			$sel=mysqli_query($con,"SELECT * FROM `department`");
-			while($row=mysqli_fetch_array($sel))
-			{
-			?>
-			<option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
-			<?php
-			}
-			?>
-		  </select>
-		  <label class="control-label" for="input">Department </label><i class="mtrl-select"></i>
-		</div>
-		 <input type="submit" required="required" class="btn btn-primary" name="search"  value="search"readonly/>
-	</form>
-	<br>
-	<ul class="naves">
-	<?php
-error_reporting(0);
-include("connection.php");
 
-if(isset($_POST['search']))
-				{
-					$name=$_POST['name'];
-					$dept=$_POST['dept'];
-					$sel=mysqli_query($con,"SELECT * FROM `student` where name='$name' and 	department='$dept'");
-					//echo "SELECT * FROM `student` where name='$name' and 	department='$dept'";
-					$rows=mysqli_num_rows($sel);
-					if($rows==0)
-					{
-						echo "<p style='color:red;'>Not Found</p>";
-					}
-				}
-				else{
-				
-				$sel=mysqli_query($con,"SELECT * FROM `student` where id!='$_SESSION[uid]'");
-				}
-				while($row=mysqli_fetch_array($sel))
-				{
-
-
-?>	
-		<li>
-			<i class="ti-user"></i>
-			<a href="viewfriendss.php?id=<?php echo $row['id']; ?>" title=""><?php echo $row['name'];?></a>
-		</li>
-		<?php
-}
-		?>
-		
-	</ul>
-</div>
-									
-</aside>
-								
-							</div><!-- sidebar -->
-							<div class="col-lg-6">
-								<div class="central-meta">
-									<div class="about">
-															<?php
-error_reporting(0);
-include("connection.php");
-
-if($_REQUEST['id'])
-{
-	$sel=mysqli_query($con,"SELECT * FROM `project` where uid='$_REQUEST[id]' and status='public' ");
-}
-else{
-	
-$sel=mysqli_query($con,"SELECT * FROM `project` where status='public'");
-}
-while($row=mysqli_fetch_array($sel))
-{
-//echo $row['title'];
-
-	$sel1=mysqli_query($con,"SELECT * FROM `student` WHERE `id`='$row[uid]]'");
-	$row1=mysqli_fetch_array($sel1);
-
-?>	
-	
-		<div class="central-meta item">
-			<div class="user-post">
-				<div class="friend-info">
-					<figure>
-						<img src="admin/user_tbl/uploads/<?php echo $row1['image']; ?>" alt="">
-					</figure>
-					<div class="friend-name">
-						<ins><a href="" title=""><?php echo $row1['name'] ?></a></ins>
-						<span>published: <?php echo $row['date'] ?></span>
-					</div>
-					<div class="post-meta">
-						<h5><?php echo $row['title'] ?></h5>
-						<div class="description">
-							<p><?php echo $row['keywords'] ?></p>
-							Abstract
-							<p><?php echo $row['abstract'] ?></p>
-
-						</div>
-						<div class="we-video-info">
-							<ul>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	
 <?php
-}
+include("profile-head.php");
+$sel1 = mysqli_query($con, "SELECT * FROM `bio` WHERE `uid`='$_SESSION[uid]'");
+$row1 = mysqli_fetch_array($sel1);
 ?>
+
+<section>
+	<div class="gap gray-bg">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="row" id="page-contents">
+						<div class="col-lg-3">
+							<aside class="sidebar static">
+								<div class="widget stick-widget">
+									<h4 class="widget-title">Friends</h4>
+									<form method="post">
+										<div class="form-group">
+											<input type="text" id="input" required="required" name="name" />
+											<label class="control-label" for="input">Name</label><i
+												class="mtrl-select"></i>
+										</div>
+										<div class="form-group">
+											<select name="dept">
+												<option value="" selected disabled>Select Department</option>
+												<?php
+												$sel = mysqli_query($con, "SELECT * FROM `department`");
+												while ($row = mysqli_fetch_array($sel)) {
+													$selected = ($_POST['dept'] == $row['id']) ? 'selected' : '';
+													echo '<option value="' . $row['id'] . '" ' . $selected . '>' . $row['name'] . '</option>';
+												}
+												?>
+											</select>
+											<label class="control-label" for="input">Department</label><i
+												class="mtrl-select"></i>
+										</div>
+										<input type="submit" required="required" class="btn btn-primary" name="search1"
+											value="Search" readonly />
+									</form>
+
+									<br>
+									<ul class="naves">
+										<?php
+										if (isset($_POST['search1'])) {
+											$name = $_POST['name'];
+											$dept = $_POST['dept'];
+											$whereClause = "";
+											if (!empty($name)) {
+												$whereClause .= "name LIKE '%$name%' AND ";
+											}
+											if (!empty($dept)) {
+												$whereClause .= "department = '$dept' AND ";
+											}
+
+											$whereClause = rtrim($whereClause, " AND ");
+											$sel = mysqli_query($con, "SELECT * FROM `student` WHERE $whereClause");
+											$rows = mysqli_num_rows($sel);
+
+											if ($rows == 0) {
+												echo "<p style='color:red;'>Not Found</p>";
+											}
+										} else {
+
+											$sel = mysqli_query($con, "SELECT * FROM `student` where id!='$_SESSION[uid]' ORDER BY username ASC");
+										}
+										while ($row = mysqli_fetch_array($sel)) {
+
+
+											?>
+											<li>
+												<i class="ti-user"></i>
+												<a href="viewfriendss.php?id=<?php echo $row['id']; ?>" title=""><?php echo $row['name']; ?></a>
+											</li>
+											<?php
+										}
+										?>
+
+									</ul>
+								</div>
+
+							</aside>
+
+						</div><!-- sidebar -->
+						<div class="col-lg-6">
+							<div class="central-meta">
+								<div class="about">
+									<ul class="nav nav-tabs" id="myTab" role="tablist">
+										<li class="nav-item" role="presentation">
+											<a class="nav-link active" id="blogs-tab" data-toggle="tab" href="#blogs"
+												role="tab" aria-controls="blogs" aria-selected="true">Blogs</a>
+										</li>
+										<li class="nav-item" role="presentation">
+											<a class="nav-link" id="projects-tab" data-toggle="tab" href="#projects"
+												role="tab" aria-controls="projects" aria-selected="false">Projects</a>
+										</li>
+									</ul>
+
+									<div class="tab-content" id="myTabContent">
+										<!-- Blogs tab -->
+										<div class="tab-pane fade show active" id="blogs" role="tabpanel"
+											aria-labelledby="blogs-tab">
+
+
+											<?php
+											error_reporting(0);
+											include("connection.php");
+
+											// Display blogs
+
+											if($_REQUEST['id'])
+											{
+												$blogSel = mysqli_query($con, "SELECT * FROM `blog` WHERE `uid`='$_REQUEST[id]' ORDER BY date DESC");
+											}else{
+												$blogSel = mysqli_query($con, "SELECT * FROM `blog` WHERE `uid` != '$_SESSION[uid]' ORDER BY date DESC");
+											}
+											$cc=mysqli_num_rows($blogSel);
+											//echo $cc;
+											if($cc>0)
+											{
+
+											}else{
+												echo "<br>";
+												echo "<h4 style='color:red;'>There are currently no blogs available.</h4>";
+											}
+											
+											//echo "SELECT * FROM `blog` WHERE `uid`='$_REQUEST[id]' ORDER BY date DESC";
+											while ($blogRow = mysqli_fetch_array($blogSel)) {
+												
+												
+												$sel1 = mysqli_query($con, "SELECT * FROM `student` WHERE `id`='$blogRow[uid]'");
+												$row1 = mysqli_fetch_array($sel1);
+												?>
+
+												<div class="central-meta item">
+													<div class="user-post">
+														<div class="friend-info">
+															<figure>
+																<img src="admin/user_tbl/uploads/<?php echo $row1['image']; ?>"
+																	alt="">
+															</figure>
+															<div class="friend-name">
+																<ins><a href="" title="">
+																		<?php echo $row1['name'] ?>
+																	</a></ins>
+																<span>published:
+																	<?php echo $blogRow['date'] ?>
+																</span>
+															</div>
+															<div class="post-meta">
+																<h5>
+																	<?php echo $blogRow['title'] ?>
+																</h5>
+																<img src="blog/<?php echo $blogRow['image']; ?>"
+																	style="width: 678px; height: 366px;" alt="">
+																<div class="description">
+																	Description
+																	<p>
+																		<?php echo $blogRow['description'] ?>
+																	</p>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<?php
+											}
+											?>
+										</div>
+
+										<!-- Projects tab -->
+										<div class="tab-pane fade" id="projects" role="tabpanel"
+											aria-labelledby="projects-tab">
+											<?php
+											error_reporting(0);
+											include("connection.php");
+
+											if ($_REQUEST['id']) {
+												$sel = mysqli_query($con, "SELECT * FROM `project` where uid='$_REQUEST[id]' and status='public' ORDER BY date DESC");
+											} else {
+
+												$sel = mysqli_query($con, "SELECT * FROM `project` where status='public' and `uid` != '$_SESSION[uid]' ORDER BY date DESC");
+											}
+											$cc=mysqli_num_rows($sel);
+											//echo $cc;
+											if($cc>0)
+											{
+
+											}else{
+												echo "<br>";
+												echo "<h4 style='color:red;'>There are currently no projects available.</h4>";
+											}
+											while ($row = mysqli_fetch_array($sel)) {
+												//echo $row['title'];
+											
+												$sel1 = mysqli_query($con, "SELECT * FROM `student` WHERE `id`='$row[uid]'");
+												$row1 = mysqli_fetch_array($sel1);
+
+												?>
+
+												<div class="central-meta item">
+													<div class="user-post">
+														<div class="friend-info">
+															<figure>
+																<img src="admin/user_tbl/uploads/<?php echo $row1['image']; ?>"
+																	alt="">
+															</figure>
+															<div class="friend-name">
+																<ins><a href="" title="">
+																		<?php echo $row1['name'] ?>
+																	</a></ins>
+																<span>published:
+																	<?php echo $row['date'] ?>
+																</span>
+															</div>
+															<div class="post-meta">
+																<h5>
+																	<?php echo $row['title'] ?>
+																</h5>
+																<div class="description">
+																	<p>
+																		<?php echo $row['keywords'] ?>
+																	</p>
+																	Abstract
+																	<p>
+																		<?php echo $row['abstract'] ?>
+																	</p>
+
+																</div>
+																<div class="we-video-info">
+																	<ul>
+																		<li>
+																			<a href="project_single.php?id=<?php echo $row['id'] ?>"
+																				title="" class="add-butn" data-ripple=""><i
+																					class="ti-eye"></i></a>
+																		</li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<?php
+											}
+											?>
+										</div>
 									</div>
-								</div>	
-							</div><!-- centerl meta -->
-							<div class="col-lg-3">
+								</div>
+							</div>
+						</div><!-- centerl meta -->
+						<div class="col-lg-3">
 								<aside class="sidebar static">
-										<div class="central-meta">
+										<div class="central-meta" style="width:fit-content">
 									<div class="groups">
 										<span><i class="fa fa-file-text-o"></i> Certificates</span>
 									</div>
-									<ul class="liked-pages">
+									<ul class="liked-pages" style="width:100%">
 										<?php
 										if($_REQUEST['id'])
 										{
@@ -158,14 +273,14 @@ while($row=mysqli_fetch_array($sel))
 										while($row=mysqli_fetch_array($sel))
 										{
 										?>
-										<li>
+										<li">
 											<div class="f-page">
 												<figure>
 													<a href="#" title=""><img src="certificates/<?php echo $row['image']; ?>" alt=""></a>
 												</figure>
 												<div class="page-infos">
-													<h5><a href="#" title="">aws </a></h5>
-													<span><a href="#" title="">Passed In 2020</a></span>
+												<h5><a href="#" title=""><?php echo $row['title']; ?></a></h5>
+                                    <span><a href="#" title=""><?php echo $row['description']; ?></a></span>
 												</div>
 											</div>
 										</li>

@@ -44,7 +44,7 @@ $row1=mysqli_fetch_array($sel1);
 													<a href="#basic" class="nav-link active" data-toggle="tab" >Basic info</a>
 												</li>
 												<li class="nav-item">
-													<a href="#work" class="nav-link" data-toggle="tab" >work and education</a>
+													<a href="#work" class="nav-link" data-toggle="tab" >Work & Education</a>
 												</li>
 											</ul>
 											<div class="tab-content">

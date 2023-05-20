@@ -11,13 +11,14 @@ while ($row = mysqli_fetch_array($result))
   $post_values[]=addslashes($_POST[$name]);
   $field_name[]=$name;
   $data_type[]=$row['Type'];
- // echo $post_values[$i];
+  echo $post_values[$i];
   $i++;
  }
 $j=$i;
 //echo "<br>";
 for($k=0;$k<$i;$k++)
 {
+
 	if($fields=="")
 	$fields=$field_name[$k];
 	else

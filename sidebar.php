@@ -20,12 +20,12 @@
 				
 				<li>
 					<i class="ti-comments-smiley"></i>
-					<a href="upload_project.php" title="">Upload Project</a>
+					<a href="upload_project.php" title="">Upload Projects</a>
 				</li> 
 				
 				<li>
 					<i class="ti-comments-smiley"></i>
-					<a href="view_projects.php" title="">View Project</a>
+					<a href="view_projects.php" title="">View Projects</a>
 				</li> 
 				
 				<li>

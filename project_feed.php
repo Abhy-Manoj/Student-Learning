@@ -15,7 +15,7 @@ include("connection.php");
 				  <input type="text" id="input" required="required" name="name"/>
 				  <label class="control-label" for="input">Enter Keywords</label><i class="mtrl-select"></i>
 				</div>
-				 <input type="submit" required="required" class="btn btn-primary" name="search"  value="search"readonly/>
+				 <input type="submit" required="required" class="btn btn-primary" name="search"  value="Search"readonly/>
 			</form>
 			<!-- Tab panes -->
 			<div class="tab-content">
@@ -43,7 +43,7 @@ include("connection.php");
 				
 			}
 			else{
-				$sel=mysqli_query($con,"SELECT * FROM project where status='public'");
+				$sel=mysqli_query($con,"SELECT * FROM project where status='public' order by date desc");
 			}
 				
 			while($row=mysqli_fetch_array($sel))
@@ -67,9 +67,19 @@ include("connection.php");
 						<div class="pepl-info">
 							<h4><a title=""><?php echo $row['title'] ?></a></h4>
 							<span><?php echo $row1['name'] ?> | published: <?php echo $row['date'] ?></span>
-							<a href="project_single.php?id=<?php echo $row['id'] ?>" title="" class="add-butn" data-ripple="">View More	</a>
-							<a href="editproject.php?id=<?php echo $row['id'] ?>" title="" class="add-butn more-action" data-ripple="">Edit</a>
-						</div>
+							<a href="project_single.php?id=<?php echo $row['id'] ?>" title="" class="add-butn" data-ripple=""><i class="ti-eye"></i></a>
+							<?php
+							if($_SESSION['uid']==$row1['id'])
+							{
+							?>
+							<a href="editproject.php?id=<?php echo $row['id'] ?>" title="" class="add-butn more-action" data-ripple=""><i class="ti-pencil-alt"></i></a>
+							<a href="delete.php?id=<?php echo $row['id'] ?>" title="" class="add-butn danger " data-ripple="" style="margin-right:45px;     background: #cd0808;"><i class="ti-trash"></i></a>
+							<?php
+							}
+							else{
+								
+							}
+							?>						</div>
 					</div>
 				</li>
 			<?php

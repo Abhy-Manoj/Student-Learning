@@ -93,13 +93,13 @@ background:#666;
                                   </div>
 								
                                    <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
-                                <a href="../dept_tbl/form.php">    <div class="font-icon-detail"><i class="pe-7s-user"></i>
+                                <a href="../dept_tbl/form.php">    <div class="font-icon-detail"><i class="pe-7s-portfolio"></i>
                                       <input type="text" value="DEPARTMENTS">
                                     </div></a>
                                   </div> 
 								  
 								  <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
-                                <a href="../projects/select.php">    <div class="font-icon-detail"><i class="pe-7s-user"></i>
+                                <a href="../projects/select.php">    <div class="font-icon-detail"><i class="pe-7s-note2"></i>
                                       <input type="text" value="PROJECTS">
                                     </div></a>
                                   </div> 

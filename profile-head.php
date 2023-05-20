@@ -98,7 +98,7 @@
 								  <span></span>
 								</li>
 								<li>
-									<a class="" href="viewtimeline.php" title="" data-ripple="">time line</a>
+									<a class="" href="viewtimeline.php" title="" data-ripple="">timeline</a>
 									<a class="" href="viewfriendss.php" title="" data-ripple="">Friends</a>
 									<a class="" href="profile.php" title="" data-ripple="">about</a>
 								</li>

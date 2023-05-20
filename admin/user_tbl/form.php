@@ -74,35 +74,55 @@ if($i==1 )
 	//echo "<td>Male <input type='radio' name='$name'> </td>";
 	
 }
+elseif($i==3)
+{
+	echo "<div class='col-md-6'>
+        <div class='form-group'>
+            <label>" . str_replace('_', ' ', $name) . "</label>
+            <input type='email' name='$name' class='form-control' required pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$' required>
+        </div>
+    </div>";
 
+}
+elseif($i==4)
+{
+	echo "<div class='col-md-6'>
+			<div class='form-group'>
+			<label>".str_replace('_', ' ', $name)."</label>
+			<input type='text' name='$name'class='form-control' pattern='[0-9]{10}' title='Please enter a 10-digit mobile number!' required> 
+			</div>
+			</div>";
+}
 elseif($i==5)
 {
 	echo "<div class='col-md-6'>
             <div class='form-group'>
 				<label>".str_replace('_', ' ', $name)."</label>
-					<select name='$name' class='form-control'>
-					   <option>Male</option>
-					   <option>Female</option>
+					<select name='$name' class='form-control' required>
+						<option value=''>Select Gender</option>
+						<option>Male</option>
+						<option>Female</option>
 	                </select>
 	         </div>
           </div>";
 }
 elseif($i==7)
 {
-	$sql2 = "select *  from department ";
-    $result2 = mysqli_query($con, $sql2) or die("Error in Selecting " . mysqli_error($connection));
-	
-	echo "<div class='col-md-6'>
-			  <div class='form-group'>
-				  <label>".str_replace('_', ' ', $name)."</label>
-				  <select name='$name' class='form-control' required>";
-				  while($row2 =mysqli_fetch_array($result2))
-				  {
-					echo "<option value='$row2[id]'>$row2[name]</option>";
-				  }
-	echo "</select>
-			  </div>
-          </div>";
+	$sql2 = "SELECT * FROM department";
+$result2 = mysqli_query($con, $sql2) or die("Error in Selecting " . mysqli_error($connection));
+
+echo "<div class='col-md-6'>
+        <div class='form-group'>
+            <label>" . str_replace('_', ' ', $name) . "</label>
+            <select name='$name' class='form-control' required>
+                <option value='' selected disabled>Select Department</option>";
+				while ($row2 = mysqli_fetch_array($result2)) {
+    				echo "<option value='$row2[id]'>$row2[name]</option>";
+				}
+				echo "</select>
+        </div>
+    </div>";
+
 		  
 }
 else
@@ -126,7 +146,7 @@ else
   
    if($type_only=="date" )
   {
-	  $date=date("Y-m-d");
+	  $date=date("d-m-Y");
 	  echo "
 	  
 	  

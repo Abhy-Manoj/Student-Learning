@@ -75,7 +75,7 @@ if($_REQUEST['rid'])
 							<p><?php echo $row['abstract'] ?></p>
 						</div>
 						<div class="description">
-							<a href="projects/<?php echo $row['file'] ?>" download><img src="images/doc.png" style="width: 71px;"></a>
+							<a href="projects/<?php echo $row['file'] ?>" download><img src="images/download.png" style="width: 71px;"></a>
 						</div>
 						<div class="we-video-info">
 							<ul>

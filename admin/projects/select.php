@@ -152,7 +152,13 @@ $row2 =mysqli_fetch_array($result2);
 				
 			}
 			
-			
+			elseif($k==5)
+			{
+			  
+
+			echo "<td > <a href='../../projects/$row[$k]' download>$row[$k]</a></td>";
+				
+			}
 				elseif($k==40)
 			{
 			  

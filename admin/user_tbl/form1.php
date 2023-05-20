@@ -127,7 +127,7 @@ else
   
    if($type_only=="date" )
   {
-	  $date=date("Y-m-d");
+	  $date=date("d-m-Y");
 	  echo "
 	  
 	  

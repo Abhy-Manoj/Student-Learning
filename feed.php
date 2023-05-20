@@ -3,7 +3,7 @@ error_reporting(0);
 include("connection.php");
 
 
-$sel=mysqli_query($con,"SELECT * FROM `blog` ORDER BY id DESC");
+$sel=mysqli_query($con,"SELECT * FROM `blog` ORDER BY date DESC");
 while($row=mysqli_fetch_array($sel))
 {
 //echo $row['title'];
