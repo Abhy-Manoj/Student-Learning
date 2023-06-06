@@ -19,7 +19,7 @@ while($row=mysqli_fetch_array($sel))
 						<img src="admin/user_tbl/uploads/<?php echo $row1['image']; ?>" alt="">
 					</figure>
 					<div class="friend-name">
-						<ins><a title=""><?php echo $row1['name'] ?></a></ins>
+						<ins><a href="frnd-prof.php?id=<?php echo $row1['id'] ?>" title=""><?php echo $row1['name'] ?></a></ins>
 						<span>published: <?php echo $row['date'] ?></span>
 					</div>
 					<div class="post-meta">

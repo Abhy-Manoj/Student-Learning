@@ -2,7 +2,7 @@
 include("connection.php");
 include("header.php");
 
-$sel = mysqli_query($con, "SELECT * FROM `student` WHERE `id`='$_SESSION[uid]'");
+$sel = mysqli_query($con, "SELECT * FROM `student` WHERE `uid`='$_REQUEST[id]'");
 $row = mysqli_fetch_array($sel);
 
 $sel2 = mysqli_query($con, "SELECT * FROM `department` WHERE `id`='$row[department]'");
@@ -13,7 +13,7 @@ $row2 = mysqli_fetch_array($sel2);
 
 <?php
 include("profile-head.php");
-$sel1 = mysqli_query($con, "SELECT * FROM `bio` WHERE `uid`='$_SESSION[uid]'");
+$sel1 = mysqli_query($con, "SELECT * FROM `bio` WHERE `id`='$_REQUEST[id]'");
 $row1 = mysqli_fetch_array($sel1);
 ?>
 
@@ -55,7 +55,7 @@ $row1 = mysqli_fetch_array($sel1);
 														<?php echo $row['name']; ?>
 													</li>
 													<li><i class="ti-email"></i>Email:
-														<?php echo strtolower($row['email']); ?>
+														<?php echo $row['email']; ?>
 													</li>
 													<li><i class="ti-mobile"></i>Phone:
 														<?php echo $row['phone']; ?>

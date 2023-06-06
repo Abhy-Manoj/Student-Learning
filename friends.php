@@ -2,13 +2,13 @@
 error_reporting(0);
 include("connection.php");
 ?>
-<!--
-<div class="widget friend-list stick-widget">
+
+<!-- <div class="widget friend-list stick-widget">
     <h4 class="widget-title">Friends</h4>
     <div id="searchDir"></div>
     <ul id="people-list" class="friendz-list">
         <?php
-        $sel = mysqli_query($con, "SELECT * FROM `student`");
+        $sel = mysqli_query($con, "SELECT * FROM `student` WHERE id != '$_SESSION[uid]' ORDER BY username ASC");
         while ($row = mysqli_fetch_array($sel)) {
             ?>
             <li>
@@ -16,27 +16,39 @@ include("connection.php");
                     <img src="admin/user_tbl/uploads/<?php echo $row['image']; ?>" alt="">
                 </figure>
                 <div class="friendz-meta">
-                    <a href="view_projects.php"><?php echo $row['name'] ?></a>
+                <a href="chat.php?id=<?php echo $row['id'] ?>" title=""><?php echo $row['name'] ?></a>
                 </div>
             </li>
             <?php
         }
         ?>
     </ul>
-</div> friends list sidebar -->
+</div> -->
+
+
+<style>
+    .btn-primary {
+        color: #0069d9;
+        background-color: #ffff;
+        border-color: #0069d9
+    }
+
+    .btn-primary:hover {
+        color: #fff;
+        background-color: #0069d9;
+        border-color: #0062cc
+    }
+</style>
 
 <div class="widget friend-list stick-widget">
     <aside class="sidebar static">
         <div class="stick-widget">
             <h4 class="widget-title">Others</h4>
             <form method="post">
-                <div class="form-group">
-                    <input type="text" id="input" required="required" name="name" />
-                    <label class="control-label" for="input">Name</label><i class="mtrl-select"></i>
-                </div>
+
                 <div class="form-group">
                     <select name="dept">
-                        <option value="">Select Department</option>
+                        <option value="" selected disabled>Select Department</option>
                         <?php
                         $sel = mysqli_query($con, "SELECT * FROM `department`");
                         while ($row = mysqli_fetch_array($sel)) {
@@ -47,11 +59,14 @@ include("connection.php");
                     </select>
                     <label class="control-label" for="input">Department</label><i class="mtrl-select"></i>
                 </div>
-                <input type="submit" required="required" class="btn btn-primary" name="search1" value="Search" readonly />
+                <input type="submit" required="required" class="form-control btn btn-primary" name="search1"
+                    value="Search" readonly />
             </form>
 
             <br>
-            <ul class="naves">
+
+            <div id="searchDir"></div>
+            <ul id="people-list" style="padding: 10px;">
                 <?php
                 if (isset($_POST['search1'])) {
                     $name = $_POST['name'];
@@ -78,7 +93,12 @@ include("connection.php");
                 while ($row = mysqli_fetch_array($sel)) {
                     ?>
                     <li>
-                        <a href="chat.php?id=<?php echo $row['id'] ?>" title=""><?php echo $row['name'] ?></a>
+                        <figure>
+                            <img src="admin/user_tbl/uploads/<?php echo $row['image']; ?>" alt="">
+                        </figure>
+                        <div class="friendz-meta">
+                            <a href="chat.php?id=<?php echo $row['id'] ?>" title=""><?php echo $row['name'] ?></a>
+                        </div>
                     </li>
                     <?php
                 }

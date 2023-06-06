@@ -66,7 +66,7 @@ if($_REQUEST['rid'])
 						<img src="admin/user_tbl/uploads/<?php echo $row1['image']; ?>" alt="">
 					</figure>
 					<div class="friend-name">
-						<ins><a href="time-line.html" title=""><?php echo $row1['name'] ?></a></ins>
+						<ins><a href="frnd-prof.php?id=<?php echo $row1['id']; ?> "title=""><?php echo $row1['name'] ?></a></ins>
 						<span>published: <?php echo $row['date'] ?></span>
 					</div>
 					<div class="post-meta">
@@ -77,19 +77,9 @@ if($_REQUEST['rid'])
 						<div class="description">
 							<a href="projects/<?php echo $row['file'] ?>" download><img src="images/download.png" style="width: 71px;"></a>
 						</div>
-						<div class="we-video-info">
-							<ul>
-								<li>
-									<span class="dislike" data-toggle="tooltip" title="" onclick="handleLikeDislike(<?php echo $_SESSION['uid'] ?>, <?php echo $_REQUEST['id'] ?>, 'dislike')">
-										
-									</span>
-									
-								</li>
-							
-
-
-						</div>
+						<br>
 					</div>
+					<br>
 					<div class="coment-area">
 						<ul class="we-comet">
 							
@@ -114,11 +104,11 @@ if($_REQUEST['rid'])
 							}
 							?>
 							<li class="post-comment">
-								<div class="post-comt-box">
+								<div class="post-comt-box"> <br>
 									<form method="post">
 										<input type="hidden" name="project" value="<?php echo $row['id'] ?>">
-										<textarea placeholder="Post your comment" name="comment"></textarea>
-										<input type="submit" value="post" name="post" class="btn btn-primary">
+										<textarea placeholder="Post your comment" name="comment"></textarea> <br>
+										<input type="submit" value="Post" name="post" class="btn btn-primary">
 									</form>	
 								</div>
 							</li>

@@ -2,14 +2,14 @@
 include("connection.php");
 include("header.php");
 
-$sel = mysqli_query($con, "SELECT * FROM `student` WHERE `id`='$_SESSION[uid]'");
+$sel = mysqli_query($con, "SELECT * FROM `student` WHERE `id`='$_REQUEST[id]'");
 $row = mysqli_fetch_array($sel);
 
 ?>
 
 <?php
-include("profile-head.php");
-$sel1 = mysqli_query($con, "SELECT * FROM `bio` WHERE `uid`='$_SESSION[uid]'");
+include("friend_head.php");
+$sel1 = mysqli_query($con, "SELECT * FROM `bio` WHERE `uid`='$_REQUEST[id]'");
 $row1 = mysqli_fetch_array($sel1);
 ?>
 

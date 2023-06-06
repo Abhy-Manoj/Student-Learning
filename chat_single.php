@@ -2,112 +2,256 @@
 error_reporting(0);
 include("connection.php");
 
+if (isset($_POST['ccc'])) {
+    date_default_timezone_set('Asia/Kolkata');
+    $date = date('d-m-Y H:i');
+    mysqli_query($con, "INSERT INTO chat(sid,message,date_time,userid) VALUES('$_SESSION[uid]','$_POST[msgd]','$date','$_REQUEST[id]')");
+    header("location:chat.php?id=$_REQUEST[id]");
+}
+?>
 
+<!DOCTYPE html>
+<html>
 
-if(isset($_POST['ccc']))
-			{
-				$date=date('Y-m-d H:m:s');
-				mysqli_query($con,"INSERT INTO chat(sid,message,date_time,userid) VALUES('$_SESSION[uid]','$_POST[msgd]','$date','$_REQUEST[id]')");
-				header("location:chat.php");
-			}
-				
-if(isset($_POST['ccc1']))
-				{
-					$date=date('Y-m-d H:m:s');
-					mysqli_query($con,"UPDATE chat  SET reply='$_POST[replay]',reply_date='$date' WHERE id='$_POST[cid]'");
-					header("location:chat.php");
-				}				
+<head>
+    <title>Chat</title>
 
+    <style>
+        .chat-wrapper {
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+            flex-direction: column;
+            display: flex;
+            scrollbar-width: thin;
+            scrollbar-color: #c3c3c3 #f5f5f5;
+        }
 
-?>	
-	
-		<div class="central-meta item">
-			<div class="user-post">
-				<div class="friend-info">
-					   <section class="section">
-        <div class="container">
-            <div class="row justify-content-between">               
-                <div class="col-md-6 col-lg-5 align-self-center">
-                    <h6 class="title">Message Now</h6>
-                    <form action="" method="post">
-				Enter Message
-				<textarea class='form-control' name='msgd' required></textarea>
-				<br>
-				<input type='submit' class='btn btn-primary' name='ccc' value='send'>
-				</form>                 
-                </div>
-                <div class="col-md-5 mt-4 mt-md-0">
-                <?php
-               
-                    $sel="SELECT * FROM chat where userid='$_REQUEST[id]' order by id desc";
-                    $result = mysqli_query($con,$sel);
-                    $rows = mysqli_num_rows($result);
-                    while($row=mysqli_fetch_array($result))
-                    {
-                        echo "<div class='col-md-12' style='background-color:#8b9595; text-align:right'><b>$row[message]</b><br> Date: $row[date_time]</div><br>";
-                        echo "<div class='col-md-12' style='background-color:#8b9595; text-align:left'>Replay<br><b>$row[reply]</b><br> Date: $row[reply_date]</div><br><br><br>";
-                    }
-			
-			    ?>
-                </div>
+        .chat-wrapper::-webkit-scrollbar {
+            width: 0.5em;
+        }
+
+        .chat-wrapper::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+
+        .chat-wrapper::-webkit-scrollbar-thumb {
+            background-color: transparent;
+            border-radius: 4px;
+        }
+
+        .message-bubble {
+            display: inline-block;
+            max-width: 70%;
+            padding: 10px;
+            border-radius: 10px;
+            color: #434242;
+            font-size: 14px;
+        }
+
+        .message-bubble1 {
+            display: inline-block;
+            max-width: 70%;
+            padding: 10px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .sent-bubble {
+            background-color: #0695FF;
+            align-self: flex-end;
+        }
+
+        .received-bubble {
+            background-color: #fff;
+            align-self: flex-start;
+        }
+
+        .message-time {
+            font-size: 9px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .message-date {
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .message-input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .send-button {
+            background-color: #5BC0F8;
+            color: #fff;
+            border: none;
+            padding: 8px;
+            border-radius: 50%;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        .send-button i {
+            font-size: 16px;
+        }
+
+        .chat-header {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .chat-header-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .profile-image {
+            border: 0.5px solid #0695FF;
+            border-radius: 50%;
+        }
+
+        .chat-header-name {
+            font-weight: bold;
+        }
+
+        .chat-wrapper:hover::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+        }
+
+        .chat-wrapper:hover::-webkit-scrollbar-track {
+            background-color: #f5f5f5;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var chatWrapper = document.getElementById('message');
+            chatWrapper.scrollTop = chatWrapper.scrollHeight;
+        };
+    </script>
+
+</head>
+
+<body>
+    <div class="central-meta item">
+        <div class="user-post">
+            <div class="friend-info">
+                <section class="section">
+                    <div class="container">
+                        <div class="row justify-content-between">
+                            <div class="container">
+                                <!-- Chat Header -->
+                                <?php
+                                $sel = mysqli_query($con, "SELECT * FROM `student` WHERE id='$_REQUEST[id]'");
+                                while ($row = mysqli_fetch_array($sel)) {
+                                    ?>
+                                    <div class="chat-header">
+                                        <img class="chat-header-image profile-image"
+                                            src="admin/user_tbl/uploads/<?php echo $row['image']; ?>" alt="Profile Image">
+                                        <a href="view.php?id=<?php echo $row['id'] ?>" title=""><?php echo $row['name'] ?></a>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                                <!-- Chat Messages -->
+                                <div class="chat-wrapper" id="message">
+                                    <?php
+                                    $sel = "SELECT * FROM chat WHERE (userid='$_SESSION[uid]' and sid='$_REQUEST[id]')  OR  (userid='$_REQUEST[id]' and sid='$_SESSION[uid]')  ORDER BY id ASC";
+                                    $result = mysqli_query($con, $sel);
+                                    $rows = mysqli_num_rows($result);
+                                    $prevDate = "";
+                                    while ($row = mysqli_fetch_array($result)) {
+                                        $time24Hr = $row['date_time'];
+                                        $time12Hr = date("h:i A", strtotime($time24Hr));
+                                        $messageDate = date("d-m-Y", strtotime($time24Hr));
+
+                                        if ($prevDate != $messageDate) {
+                                            echo "<div class='message-date'>$messageDate</div>";
+                                            $prevDate = $messageDate;
+                                        }
+
+                                        if ($row['sid'] == $_SESSION['uid']) {
+                                            echo "<div class='message-wrapper sent' style='text-align:right'>";
+                                            echo "<div class='message-bubble1 sent-bubble'>";
+                                            echo "<span class='message-text'>$row[message]</span>";
+                                            echo "</div>";
+                                            echo "</div>";
+                                            echo "<span class='message-time' style='text-align:right'>$time12Hr</span>";
+                                        } else {
+                                            echo "<div class='message-wrapper received'>";
+                                            echo "<div class='message-bubble received-bubble'>";
+                                            echo "<span class='message-text'>$row[message]</span>";
+                                            echo "</div>";
+                                            echo "</div>";
+                                            echo "<span class='message-time'>$time12Hr</span>";
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                                <!-- Message Input -->
+                                <form action="" method="post">
+                                    <div class="input-wrapper">
+                                        <input type="text" class="message-input" name="msgd" placeholder=" Message"
+                                            required>
+                                        <button type="submit" class="send-button" name="ccc"><i
+                                                class="fa fa-paper-plane"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
-    </section>
-	
-	
-	<section class="section">
-			<div class="container">
-				<div class="row justify-content-between">  
-					<div class="col-md-5 mt-4 mt-md-0" style="margin-left: 380px; ">
-					<?php
-						$sel="SELECT * FROM chat where userid='$_SESSION[uid]' and sid='$_REQUEST[id]' order by id desc";
-						//echo $sel;
-						$result = mysqli_query($con,$sel);
-						$rows = mysqli_num_rows($result);
-						while($row=mysqli_fetch_array($result))
-						{
-							echo "<div class='col-md-12' style='background-color:#cccccc;'><br><br>";
-							$sel2="SELECT * FROM student WHERE id='$row[userid]'";
-							$result2 = mysqli_query($con,$sel2);
-							$rows2 = mysqli_fetch_array($result2);
-							
-							if($row['reply']=="")
-							{
-								echo "<div class='col-md-12' style='background-color:#9d9494; text-align:right'><b>$row[message]</b><br>User : $rows2[name] &nbsp; &nbsp; Date: $row[date_time]</div><br>";
-					?>
-								<form action="" method="post">
-								Enter Reply
-									<textarea class='form-control' name='replay'></textarea>
-									<input type='hidden' name='cid' value='<?php echo $row['id']; ?>' />
-									<br>
-									<input type='submit' class='btn btn-primary' name='ccc1' value='send'>
-									<br>
-									<br>
-								</form>  
-					<?php   
-						echo"</div><br><br>";
-							}
-							else{
+    </div>
+</body>
+<!-- JavaScript code for real-time chat -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    var chatWrapper = document.getElementById('message');
+    var isScrolledToBottom = chatWrapper.scrollHeight - chatWrapper.clientHeight <= chatWrapper.scrollTop + 1;
+    function fetchMessages() 
+    {
+        $.ajax({
+            url: 'fetch_messages.php',
+            type: 'GET',
+            data: { id: <?php echo $_REQUEST['id']; ?> },
+            success: function (response) 
+            {
+                // Check if the user is scrolled to the bottom before appending new messages
+                var shouldScrollToBottom = isScrolledToBottom;
 
-								echo "<div class='col-md-12' style='background-color:#9d9494; text-align:right'><b>$row[message]</b><br>User : $rows2[name] &nbsp; &nbsp; Date: $row[date_time]</div><br>";
+                // Append the new messages to the chat wrapper
+                $('#message').html(response);
 
-								echo "<div class='col-md-12' style='background-color:#9d9494; text-align:left'>Reply<br><b>$row[reply]</b><br> Date: $row[reply_date]</div><br><br><br>";
-								
-								echo"</div><br><br>";
-
-							}
-						}
-					?>
-					</div>
-				</div>
-			</div>
-		</section>
-		
-				</div>
-			</div>
-		</div>
-	
-<?php
-
-?>
-							
+                // Scroll to the bottom of the chat wrapper if the user was already at the bottom
+                if (shouldScrollToBottom) 
+                {
+                    chatWrapper.scrollTop = chatWrapper.scrollHeight;
+                }
+            }
+        });
+    }
+    setInterval(fetchMessages, 1000);
+</script>
+</html>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2023 at 10:04 AM
+-- Generation Time: Jun 02, 2023 at 03:36 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -129,17 +129,61 @@ CREATE TABLE IF NOT EXISTS `chat` (
   `reply` text NOT NULL,
   `reply_date` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=77 ;
 
 --
 -- Dumping data for table `chat`
 --
 
 INSERT INTO `chat` (`id`, `sid`, `message`, `userid`, `date_time`, `reply`, `reply_date`) VALUES
-(1, 1, 'Hi', 2, '2023-04-20 06:04:28', 'Hello', '2023-04-20 06:04:49'),
-(2, 1, 'Hi da', 2, '2023-04-27 10:04:55', '', ''),
 (3, 2, 'Hi', 1, '2023-05-18 18:17:32', '', ''),
-(4, 2, 'Hi', 1, '2023-05-18 18:05:26', '', '');
+(4, 2, 'Hi', 1, '2023-05-18 18:05:26', '', ''),
+(5, 2, 'Hi', 6, '2023-06-01 09:06:35', '', ''),
+(6, 2, 'Hello', 6, '2023-06-01 09:06:25', '', ''),
+(7, 2, 'Hello', 7, '2023-06-01 09:06:31', '', ''),
+(8, 2, 'Hello', 7, '2023-06-01 09:06:57', '', ''),
+(9, 2, 'Hey', 9, '2023-06-01 09:06:56', '', ''),
+(10, 2, 'Hey', 9, '2023-06-01 09:06:24', '', ''),
+(11, 2, 'Hey', 9, '2023-06-01 09:06:10', '', ''),
+(12, 2, 'Hello', 12, '2023-06-01 09:06:22', '', ''),
+(13, 2, 'hello', 8, '2023-06-01 09:06:05', '', ''),
+(14, 8, 'hello', 2, '2023-06-01 09:06:28', '', ''),
+(15, 2, 'hello', 1, '2023-06-01 10:06:45', '', ''),
+(17, 2, 'Hello', 1, '01-06-2023 10:06:15', '', ''),
+(19, 2, 'Hi', 1, '01-06-2023 10:06:54', '', ''),
+(21, 2, 'new', 1, '2023-06-01 10:06:53', '', ''),
+(23, 2, 'New message', 1, '2023-06-01 11:06', '', ''),
+(26, 2, 'Message from 2', 1, '01-06-2023 17:06', '', ''),
+(28, 2, 'This is the message from Aishwarya to Aakash', 5, '01-06-2023 17:06', '', ''),
+(29, 2, 'Abhijith*', 5, '01-06-2023 17:06', '', ''),
+(30, 2, 'Message from Abhijith to Aakash', 1, '01-06-2023 17:06', '', ''),
+(31, 5, 'Hi this is a message from Aishwarya to Aakash', 1, '01-06-2023 17:06', '', ''),
+(32, 5, 'hello', 1, '01-06-2023 18:06', '', ''),
+(33, 5, 'hello', 1, '01-06-2023 18:06', '', ''),
+(34, 5, 'haiiii', 1, '01-06-2023 18:06', 'qwert', ''),
+(35, 5, 'hello', 1, '01-06-2023 18:06', '', ''),
+(36, 5, 'hi im rj', 1, '01-06-2023 18:06', '', ''),
+(38, 5, 'aishwarya here', 1, '01-06-2023 18:06', '', ''),
+(39, 5, 'how can i help????', 1, '01-06-2023 18:06', '', ''),
+(42, 5, 'sdfghjkl', 1, '01-06-2023 18:06', '', ''),
+(45, 5, 'This is a message from Aiswarya to Abhijith', 2, '01-06-2023 20:06', '', ''),
+(47, 5, '--Testing-- Msg recieved! This is a msg from Abhy to Aishwarya', 2, '02-06-2023 07:06', '', ''),
+(48, 5, '-- user flip --', 2, '02-06-2023 07:06', '', ''),
+(49, 2, '-- Working --', 5, '02-06-2023 07:06', '', ''),
+(50, 2, 'Hello', 5, '02-06-2023 10:06', '', ''),
+(53, 2, 'hello dude', 5, '02-06-2023 14:06', '', ''),
+(54, 2, '--Check--', 5, '02-06-2023 10:06', '', ''),
+(60, 2, 'Hi', 11, '02-06-2023 14:06', '', ''),
+(61, 2, 'Checking the time', 11, '02-06-2023 14:09', '', ''),
+(63, 2, 'This is a big test used to test the message alignment !!! Adding some more', 1, '02-06-2023 14:12', '', ''),
+(65, 2, 'Checking the date', 5, '02-06-2023 14:38', '', ''),
+(68, 2, '-- Testing the date & time --', 5, '02-06-2023 15:25', '', ''),
+(69, 5, 'Hello from Aysh', 1, '02-06-2023 16:26', '', ''),
+(70, 5, 'ðŸ˜', 1, '02-06-2023 16:27', '', ''),
+(71, 5, '-- Testing date & time --', 2, '02-06-2023 16:42', '', ''),
+(74, 1, '-- Testing Completed! --', 2, '02-06-2023 19:00', '', ''),
+(75, 1, '-- Working Fine --', 2, '02-06-2023 19:00', '', ''),
+(76, 2, '-- Working --', 1, '02-06-2023 19:03', '', '');
 
 -- --------------------------------------------------------
 
@@ -323,14 +367,14 @@ INSERT INTO `student` (`id`, `name`, `email`, `phone`, `gender`, `dob`, `departm
 (1, 'Aakash A Nair', 'aakashnair2001@gmail.com', '8893622920', 'Male', '2001-04-20', '1', 'ASI19CS002', 'ASI19CS002', 'Aakash A Nair.jpeg'),
 (2, 'Abhijith Manoj', 'abhy2817@gmail.com', '8075531983', 'Male', '2000-11-23', '2', 'ASI19CS007', 'ASI19CS007', 'Abhijith Manoj.jpg'),
 (5, 'Aishwarya Baiju', 'ayshubaiju7@gmail.com', '7355612288', 'Female', '2000-04-01', '4', 'ASI19CS013', 'ASI19CS013', 'Aishwarya Baiju_.jpg'),
-(6, 'Aadhithyanarayanan V', 'aadhithyaanil5@gmail.com', '9061639117', 'Male', '2023-05-11', '1', 'ASI19CS001', 'ASI19CS001', '2023-05-11-07-43-07ASI19CS001.jpg'),
-(7, 'Abhay Krishnan', 'abhayk@mail.co', '4541458915', 'Male', '2023-05-11', '1', 'ASI19CS003', 'ASI19CS003', '2023-05-11-07-44-01ASI19CS003.jpg'),
-(8, 'Abhay Sankar K', 'abhaykanjoor@gmail.com', '4512357896', 'Male', '2023-05-11', '1', 'ASI19CS004', 'ASI19CS004', '2023-05-11-07-44-40ASI19CS004.jpg'),
-(9, 'Abhijith E S', 'abhijithes@mail.co', '2145879632', 'Male', '2023-05-11', '1', 'ASI19CS005', 'ASI19CS005', '2023-05-11-07-45-41ASI19CS005.jpg'),
+(6, 'Aadhithyanarayanan', 'aadhithyaanil5@gmail.com', '9061639117', 'Male', '2023-05-11', '1', 'ASI19CS001', 'ASI19CS001', '2023-05-11-07-43-07ASI19CS001.jpg'),
+(7, 'Abhay Krishnan', 'abhayk@mail.co', '4541458915', 'Male', '2023-05-11', '1', 'ASI19CS003', 'ASI19CS003', '2023-05-22-09-45-222023-05-11-07-44-01ASI19CS003.jpg'),
+(8, 'Abhay Sankar K', 'abhaykanjoor@gmail.com', '4512357896', 'Male', '2023-05-11', '1', 'ASI19CS004', 'ASI19CS004', '2023-05-22-09-45-362023-05-11-07-44-40ASI19CS004.jpg'),
+(9, 'Abhijith E S', 'abhijithes@mail.co', '2145879632', 'Male', '2023-05-11', '1', 'ASI19CS005', 'ASI19CS005', '2023-05-22-09-45-552023-05-11-07-45-41ASI19CS005.jpg'),
 (10, 'Abhijith Jaideep', 'abhijiithjaideep176@gmail.com', '2135468423', 'Male', '2023-05-11', '1', 'ASI19CS006', 'ASI19CS006', '2023-05-11-07-46-28ASI19CS006.jpg'),
-(11, 'Abhishek Hareeshan M', 'abhishek@mail.co', '9562171963', 'Male', '2023-05-11', '1', 'ASI19CS008', 'ASI19CS008', '2023-05-11-07-47-38ASI19CS008.jpg'),
-(12, 'Abin P Fransis', 'abin@mail.co', '9446740358', 'Male', '2023-05-11', '1', 'ASI19CS009', 'ASI19CS009', '2023-05-11-07-48-19ASI19CS009.jpg'),
-(13, 'Adith Menon', 'adithmenonc@gmail.com', '4578632192', 'Male', '2023-05-11', '1', 'ASI19CS010', 'ASI19CS010', '2023-05-11-07-48-55ASI19CS010.jpg');
+(11, 'Abhishek Hareeshan M', 'abhishek@mail.co', '9562171963', 'Male', '2023-05-11', '1', 'ASI19CS008', 'ASI19CS008', '2023-05-22-09-46-162023-05-11-07-47-38ASI19CS008.jpg'),
+(12, 'Abin P Fransis', 'abin@mail.co', '9446740358', 'Male', '2023-05-11', '1', 'ASI19CS009', 'ASI19CS009', '2023-05-22-09-46-422023-05-11-07-48-19ASI19CS009.jpg'),
+(13, 'Adith Menon', 'adithmenonc@gmail.com', '4578632192', 'Male', '2023-05-11', '1', 'ASI19CS010', 'ASI19CS010', '2023-05-22-09-47-062023-05-11-07-48-55ASI19CS010.jpg');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

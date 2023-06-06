@@ -1981,7 +1981,7 @@ li.post-comment .comet-avatar {
 }
 
 #searchDir {
-    padding: 0 20px;
+    padding: 0px 0px;
 }
 
 #people-list {
@@ -10045,5 +10045,3 @@ aside.sidebar.full-style {
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
-
-

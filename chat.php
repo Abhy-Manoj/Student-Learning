@@ -12,7 +12,7 @@ if ($_SESSION['user']=="")
 ?>
 		
 	<section>
-		<div class="gap gray-bg">
+		<div class="gap gray-bg" style='padding:30px;'>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">

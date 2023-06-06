@@ -103,7 +103,7 @@ $row1=mysqli_fetch_array($sel1);
 											if ($up1 or $up2)
 											{
 											echo '<script>alert("Succesful!")
-													  window.location="edit-profile.php";
+													  window.location="profile.php";
 													  </script>'; 
 											}
 										}
