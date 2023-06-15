@@ -1,4 +1,10 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Admin - Student Learning</title>
+    <link rel="icon" href="\student_learning\admin\assets\img\adi.png" type="image/png" sizes="16x16"> 
+
+</head><?php
 error_reporting(0);
 $status=$_REQUEST['status'];
 if ($status == "logout")

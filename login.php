@@ -23,7 +23,9 @@
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 				<div class="land-featurearea">
 					<div class="land-meta">
-						<h1>STUDENT LEARNING</h1>
+					<div class="">
+							<span><img src="images/creslina-regular.png" alt="Image" width="500" height="400"></span>
+						</div>
 						<p>
 							An Exclusive Learning Platform For ASIET Students.
 						</p>
@@ -35,7 +37,7 @@
 			</div>
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 				<div class="login-reg-bg">
-					<div class="log-reg-area sign">
+					<div class="log-reg-area sign" style="border-radius: 10px;">
 						<h2 class="log-title">Login</h2>
 							
 						<form method="post" action="log.php">

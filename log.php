@@ -23,12 +23,12 @@ $password=$_POST['password'];
 		
 		if($row['type']=="student")
 		{	
-			$query = "SELECT * FROM student WHERE username='$username' and password='$password'";	 
+			$query = "SELECT * FROM student WHERE BINARY username='$username' and BINARY password='$password'";	 
 			$data=mysqli_query($con,$query);
 			$count=mysqli_num_rows($data);
 			if($count==1)
 			{
-				$query1 = "SELECT * FROM student WHERE username='$username' and password='$password'";	 
+				$query1 = "SELECT * FROM student WHERE BINARY username='$username' and BINARY password='$password'";	 
 				$datas=mysqli_query($con,$query1);
 				$cc=mysqli_fetch_array($datas);
 				
@@ -59,31 +59,6 @@ $password=$_POST['password'];
 				$_SESSION['user']='staff';
 				$_SESSION['uid']=$cc['id'];
 				header("location:web/dashboard/dashboard.php");
-			}
-			else
-			{
-				//echo "Error : ".mysqli_error($con);
-				header("location:login.php?st=fail");
-			}
-			
-		}
-		elseif(($row['type']=="customer"))
-		{
-			$query = "SELECT * FROM customer WHERE customer_email='$username' and customer_password='$password'";	 
-			//echo $query;
-			$data=mysqli_query($con,$query);
-			$count=mysqli_num_rows($data);
-			if($count==1)
-			{
-				$query1 = "SELECT * FROM customer WHERE customer_email='$username' and customer_password='$password'";
-				echo $query1;
-				$datas=mysqli_query($con,$query1);
-				$cc=mysqli_fetch_array($datas);
-				echo $cc['name'];
-				
-				$_SESSION['user']='customer';
-				$_SESSION['uid']=$cc['id'];
-				header("location:user/index.php");
 			}
 			else
 			{

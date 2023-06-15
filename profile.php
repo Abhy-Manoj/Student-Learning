@@ -30,7 +30,7 @@ $row1 = mysqli_fetch_array($sel1);
 
 						</div><!-- sidebar -->
 						<div class="col-lg-6">
-							<div class="central-meta">
+							<div class="central-meta" style="border-radius: 10px;">
 								<div class="about">
 									<div class="personal">
 										<h5 class="f-title"><i class="ti-info-alt"></i> Personal Info</h5>
@@ -38,35 +38,35 @@ $row1 = mysqli_fetch_array($sel1);
 											<?php echo $row1['about']; ?>
 										</p>
 									</div>
-									<div class="d-flex flex-row mt-2">
+									<div class="d-flex flex-row mt-2" style="border-radius: 10px;">
 										<ul class="nav nav-tabs nav-tabs--vertical nav-tabs--left">
 											<li class="nav-item">
-												<a href="#basic" class="nav-link active" data-toggle="tab">Basic
+												<a href="#basic" class="nav-link active" data-toggle="tab"style="border-top-left-radius: 5px;">Basic
 													info</a>
 											</li>
 											<li class="nav-item">
-												<a href="#work" class="nav-link" data-toggle="tab">Work & Education</a>
+												<a href="#work" class="nav-link" data-toggle="tab"style="border-bottom-left-radius: 5px;">Work & Education</a>
 											</li>
 										</ul>
 										<div class="tab-content">
 											<div class="tab-pane fade show active" id="basic">
-												<ul class="basics">
-													<li><i class="ti-user"></i>Name:
+												<ul class="basics"style="padding-left: 40px;">
+													<li style="margin-bottom: 15px;"><i class="ti-user"></i>Name:
 														<?php echo $row['name']; ?>
 													</li>
-													<li><i class="ti-email"></i>Email:
+													<li style="margin-bottom: 15px;"><i class="ti-email"></i>Email:
 														<?php echo strtolower($row['email']); ?>
 													</li>
-													<li><i class="ti-mobile"></i>Phone:
+													<li style="margin-bottom: 15px;"><i class="ti-mobile"></i>Phone:
 														<?php echo $row['phone']; ?>
 													</li>
-													<li><i class="ti-info-alt"></i>Gender:
+													<li style="margin-bottom: 15px;"><i class="ti-info-alt"></i>Gender:
 														<?php echo $row['gender']; ?>
 													</li>
-													<li><i class="ti-gift"></i>DOB:
+													<li style="margin-bottom: 15px;"><i class="ti-gift"></i>DOB:
 														<?php echo $row['dob']; ?>
 													</li>
-													<li><i class="ti-id-badge"></i>Username:
+													<li style="margin-bottom: 15px;"><i class="ti-id-badge"></i>Username:
 														<?php echo $row['username']; ?>
 													</li>
 
@@ -77,7 +77,7 @@ $row1 = mysqli_fetch_array($sel1);
 													<div id="map-canvas"></div>
 												</div>
 											</div>
-											<div class="tab-pane fade" id="work" role="tabpanel">
+											<div class="tab-pane fade" id="work" role="tabpanel"style="padding-left: 40px;">
 												<div>
 
 													<a href="#" title="">Department</a>
@@ -101,7 +101,7 @@ $row1 = mysqli_fetch_array($sel1);
 						</div><!-- centerl meta -->
 						<div class="col-lg-3">
 							<aside class="sidebar static">
-								<div class="central-meta" style="width:fit-content">
+								<div class="central-meta" style="width:fit-content; border-radius: 10px;">
 									<div class="groups">
 										<span><i class="fa fa-file-text-o"></i> Certificates</span>
 									</div>

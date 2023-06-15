@@ -88,7 +88,7 @@ margin-bottom:5px;
         str_replace("_", " ", $name) .
         "</label>
 					<select name='$name' class='form-control' required>
-						<option value=''>Select Gender</option>
+						<option value='' selected disabled>Select Gender</option>
 						<option>Male</option>
 						<option>Female</option>
 	                </select>

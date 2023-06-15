@@ -23,7 +23,7 @@ $row=mysqli_fetch_array($sel);
 								
 							</div><!-- sidebar -->
 							<div class="col-lg-6">
-							<div class="central-meta">
+							<div class="central-meta" style="border-radius: 10px;">
 								<div class="editing-info">
 									<h5 class="f-title"><i class="ti-lock"></i>Change Password</h5>
 									

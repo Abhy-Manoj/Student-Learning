@@ -16,7 +16,7 @@ include("header.php");
 							
 							
 							<div class="col-lg-6">
-								<div class="central-meta">
+								<div class="central-meta" style="border-radius: 10px;">
 									<div class="editing-info">
 										<h5 class="f-title"><i class="ti-info-alt"></i>Tech Blog</h5>
 

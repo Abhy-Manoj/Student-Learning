@@ -13,6 +13,20 @@ $sel1 = mysqli_query($con, "SELECT * FROM `bio` WHERE `uid`='$_SESSION[uid]'");
 $row1 = mysqli_fetch_array($sel1);
 ?>
 
+<style>
+    .btn-primary {
+        color: #0069d9;
+        background-color: #ffff;
+        border-color: #0069d9
+    }
+
+    .btn-primary:hover {
+        color: #fff;
+        background-color: #0069d9;
+        border-color: #0062cc
+    }
+</style>
+
 <section>
 	<div class="gap gray-bg">
 		<div class="container-fluid">
@@ -21,7 +35,7 @@ $row1 = mysqli_fetch_array($sel1);
 					<div class="row" id="page-contents">
 						<div class="col-lg-3">
 							<aside class="sidebar static">
-								<div class="widget stick-widget">
+								<div class="widget stick-widget" style="border-radius: 10px;">
 									<h4 class="widget-title">Friends</h4>
 									<form method="post">
 
@@ -45,7 +59,7 @@ $row1 = mysqli_fetch_array($sel1);
 									</form>
 
 									<div id="searchDir" style="padding: 20px;"></div>
-									<ul id="people-list" style="padding: auto; margin-top: 0px">
+									<ul id="people-list" style="padding: auto; margin-top: 0px; max-height: 360px;">
 										<?php
 										if (isset($_POST['search1'])) {
 											$name = $_POST['name'];
@@ -89,7 +103,7 @@ $row1 = mysqli_fetch_array($sel1);
 
 						</div><!-- sidebar -->
 						<div class="col-lg-6">
-							<div class="central-meta">
+							<div class="central-meta" style="border-radius: 10px;">
 								<div class="about">
 									<ul class="nav nav-tabs" id="myTab" role="tablist">
 										<li class="nav-item" role="presentation">
@@ -102,7 +116,7 @@ $row1 = mysqli_fetch_array($sel1);
 										</li>
 									</ul>
 
-									<div class="tab-content" id="myTabContent">
+									<div class="tab-content" id="myTabContent" style="border-radius: 10px;">
 										<!-- Blogs tab -->
 										<div class="tab-pane fade show active" id="blogs" role="tabpanel"
 											aria-labelledby="blogs-tab">
@@ -255,7 +269,7 @@ $row1 = mysqli_fetch_array($sel1);
 						</div><!-- centerl meta -->
 						<div class="col-lg-3">
 							<aside class="sidebar static">
-								<div class="central-meta" style="width:fit-content">
+								<div class="central-meta" style="width:fit-content; border-radius: 10px;">
 									<div class="groups">
 										<span><i class="fa fa-file-text-o"></i> Certificates</span>
 									</div>

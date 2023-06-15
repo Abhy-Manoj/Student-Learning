@@ -13,22 +13,22 @@ if ($_SESSION['user']=="")
 
 <style>
 .col-lg-6.fixed-height {
-    max-height: 635px;
+    max-height: 528px;
     overflow-y: auto;
 }
 
 .col-lg-6.fixed-height::-webkit-scrollbar {
-    width: 8px; /* Adjust the width as needed */
+    width: 0px; /* Adjust the width as needed */
     background-color: transparent; /* Set the background color of the scrollbar to transparent */
 }
 
 .col-lg-6.fixed-height::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.2); /* Set the color of the scrollbar thumb */
+    background-color: transparent; /* Set the color of the scrollbar thumb */
     border-radius: 4px; /* Adjust the border radius as needed */
 }
 
 .col-lg-6.fixed-height::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(0, 0, 0, 0.4); /* Set the color of the scrollbar thumb on hover */
+    background-color: transparent; /* Set the color of the scrollbar thumb on hover */
 }
 
 .col-lg-6.fixed-height::-webkit-scrollbar-track {

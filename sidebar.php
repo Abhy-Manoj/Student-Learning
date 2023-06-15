@@ -1,7 +1,7 @@
 <div class="col-lg-3" >
 	<aside class="sidebar static">
-		<div class="widget stick-widget" >
-			<h4 class="widget-title">Shortcuts</h4>
+		<div class="widget stick-widget" style="border-radius: 10px;" >
+			<h4 class="widget-title">Dashboard</h4>
 			<ul class="naves">
 				<li>
 					<i class="ti-home"></i>
@@ -28,6 +28,11 @@
 					<a href="view_projects.php" title="">View Projects</a>
 				</li> 
 				
+				<li>
+					<i class="ti-comment"></i>
+					<a href="chat.php" title="">Messages</a>
+				</li>
+
 				<li>
 					<i class="ti-files"></i>
 					<a href="certificates.php" title="">Certificates</a>

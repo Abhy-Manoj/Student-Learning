@@ -4,8 +4,33 @@ include("connection.php");
 
 ?>
 
+<style>
+.nearby-contct.fixed-height {
+    max-height: 355px;
+    overflow-y: auto;
+}
+
+.nearby-contct.fixed-height::-webkit-scrollbar {
+    width: 5px; /* Adjust the width as needed */
+    background-color: transparent; /* Set the background color of the scrollbar to transparent */
+}
+
+.nearby-contct.fixed-height::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Set the color of the scrollbar thumb */
+    border-radius: 4px; /* Adjust the border radius as needed */
+}
+
+.nearby-contct.fixed-height:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3); /* Set the color of the scrollbar thumb on hover */
+}
+
+.nearby-contct.fixed-height::-webkit-scrollbar-track {
+    background-color: transparent; /* Set the background color of the scrollbar track to transparent */
+}
+</style>
+
 <div class="col-lg-12">
-	<div class="central-meta">
+	<div class="central-meta" style="border-radius: 10px; margin-bottom: 0px; padding-top: 10px; padding-bottom: 5px;">
 		<div class="frnds">
 			<ul class="nav nav-tabs">
 				 <li class="nav-item"><a class="active" href="#frends" data-toggle="tab">Projects</a> </li>
@@ -20,7 +45,7 @@ include("connection.php");
 			<!-- Tab panes -->
 			<div class="tab-content">
 			  <div class="tab-pane active fade show " id="frends" >
-				<ul class="nearby-contct">
+				<ul class="nearby-contct fixed-height" style="margin-top:15px">
 			<?php
 			if(isset($_POST['search']))
 			{
@@ -59,7 +84,7 @@ include("connection.php");
 	
 
 				
-				<li>
+				<li style="border-radius: 10px;">
 					<div class="nearly-pepls">
 						<figure>
 							<a href="" title=""><img src="images/a.png" alt=""></a>
@@ -67,19 +92,20 @@ include("connection.php");
 						<div class="pepl-info">
 							<h4><a title=""><?php echo $row['title'] ?></a></h4>
 							<span><?php echo $row1['name'] ?> | published: <?php echo $row['date'] ?></span>
-							<a href="project_single.php?id=<?php echo $row['id'] ?>" title="" class="add-butn" data-ripple=""><i class="ti-eye"></i></a>
+							<a href="project_single.php?id=<?php echo $row['id'] ?>" title="" class="add-butn" style="border-radius: 3px;" data-ripple=""><i class="ti-eye"></i></a>
 							<?php
 							if($_SESSION['uid']==$row1['id'])
 							{
 							?>
-							<a href="editproject.php?id=<?php echo $row['id'] ?>" title="" class="add-butn more-action" data-ripple=""><i class="ti-pencil-alt"></i></a>
-							<a href="delete.php?id=<?php echo $row['id'] ?>" title="" class="add-butn danger " data-ripple="" style="margin-right:45px;     background: #cd0808;"><i class="ti-trash"></i></a>
+							<a href="editproject.php?id=<?php echo $row['id'] ?>" title="" class="add-butn more-action" style="border-radius: 5px;" data-ripple=""><i class="ti-pencil-alt"></i></a>
+							<a href="delete.php?id=<?php echo $row['id'] ?>" title="" class="add-butn danger " data-ripple="" style="margin-right:45px; border-radius: 5px; background: #cd0808;"><i class="ti-trash"></i></a>
 							<?php
 							}
 							else{
 								
 							}
-							?>						</div>
+							?>						
+						</div>
 					</div>
 				</li>
 			<?php

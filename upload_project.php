@@ -4,7 +4,7 @@ include("header.php");
 ?>
 		
 	<section>
-		<div class="gap gray-bg">
+		<div class="gap gray-bg" style="padding: 30px 0">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
@@ -16,29 +16,29 @@ include("header.php");
 							
 							
 							<div class="col-lg-6">
-								<div class="central-meta">
+								<div class="central-meta" style="border-radius: 10px;">
 									<div class="editing-info">
 										<h5 class="f-title"><i class="ti-info-alt"></i> project Post</h5>
 
-										<form method="post" enctype="multipart/form-data">
-											<div class="form-group">	
+										<form method="post" enctype="multipart/form-data" style="margin-top: 0px;">
+											<div class="form-group" style="margin-top: 0px; margin-bottom: 4px;">	
 											  <input type="text" id="input" name="title" required="required"/>
 											  <label class="control-label" for="input">Title</label><i class="mtrl-select"></i>
 											</div>
-											<div class="form-group">	
+											<div class="form-group"style="margin-bottom: 4px;">	
 											  <input type="text" required="required" name="keywords"/>
 											  <label class="control-label" for="input">Keywords</label><i class="mtrl-select"></i>
 											</div>
-											<div class="form-group">	
-											  <textarea rows="4" id="textarea" required="required" name="abstract" ></textarea>
+											<div class="form-group"style="margin-bottom: 4px;">	
+											  <textarea rows="3" id="textarea" required="required" name="abstract" ></textarea>
 											  <label class="control-label" for="textarea">Abstract</label><i class="mtrl-select"></i>
 											</div>
-											<div class="form-group">
+											<div class="form-group"style="margin-bottom: 0px;">
 											  <label>Document</label>
 											  <input type="file" required="required" name="file"/>
 											  
 											</div>
-											<div class="form-group">	
+											<div class="form-group" style="margin-top: 0px;">	
 											  <select name="status" >
 												<option value="public">Public</option>
 												  <option value="private">Private</option>

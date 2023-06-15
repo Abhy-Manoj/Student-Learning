@@ -47,15 +47,11 @@ session_start();
 			</div>
 
 			<div class="top-area">
-				<ul class="main-menu">
-					<li>
-						<a href="index.php" title="">Home</a>
-					</li>
-				</ul>
-
 				<div class="user-img">
 					<br>
 				</div>
+				<a href="index.php" title=""><i class="ti-home"></i> Home</a>
+				&nbsp;&nbsp;&nbsp;
 				<?php
 				include("connection.php");
 				$sel1 = mysqli_query($con, "SELECT * FROM `student` WHERE `id`='$_SESSION[uid]]'");

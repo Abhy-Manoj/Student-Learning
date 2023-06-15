@@ -6,6 +6,21 @@ $row = mysqli_fetch_array($sel);
 
 ?>
 
+<style>
+  .message-container {
+    display: flex; /* Set the container to use flexbox */
+    align-items: center; /* Center the items vertically */
+  }
+
+  .message-sticker {
+    margin-right: 7px; /* Add some margin between the sticker and text */
+  }
+
+  .timeline-info ul li {
+    margin-right: 15x; /* Adjust the margin to reduce horizontal space */
+  }
+</style>
+
 <section>
 		<div class="feature-photo">
 			<?php
@@ -40,9 +55,30 @@ $row = mysqli_fetch_array($sel);
 								  <h5><?php echo $row['name']; ?></h5>
 								  <span></span>
 								</li>
-								<!-- <li>
-									<a class="" href="fprofile.php" title="" data-ripple="">about</a>
-								</li> -->
+								<li>
+								<div class="message-container">
+  								<div class="message-sticker">
+								<i class="ti-comment"></i>
+								</div>
+									<a class="" href="chat.php?id=<?php echo $row['id'] ?>" title="" data-ripple="">Message</a>
+								</div>
+								</li>
+								<li>
+								<div class="message-container">
+								<div class="message-sticker">
+								<i class="ti-desktop"></i>
+								</div>
+									<a class="" href="frnd-prof.php?id=<?php echo $row['id']; ?>" title="" data-ripple="">Timeline</a>
+								</div>
+								</li>
+								<li>
+								<div class="message-container">
+								<div class="message-sticker">
+								<i class="ti-user"></i>
+								</div>
+									<a class="" href="fprofile.php?id=<?php echo $row['id'] ?>" title="" data-ripple="">about</a>
+								</div>
+								</li>
 							</ul>
 						</div>
 					</div>

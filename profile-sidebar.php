@@ -1,5 +1,5 @@
 <aside class="sidebar static">
-	<div class="widget">
+	<div class="widget" style="border-radius: 10px;">
 	<h4 class="widget-title">Info</h4>
 	<ul class="naves">
 	

@@ -40,8 +40,8 @@ include("connection.php");
     }
 </style>
 
-<div class="widget friend-list stick-widget">
-    <aside class="sidebar static">
+<div class="widget friend-list stick-widget" style="border-radius: 10px;">
+    <aside class="sidebar static"  style="padding-bottom:0px;">
         <div class="stick-widget">
             <h4 class="widget-title">Others</h4>
             <form method="post">
@@ -66,7 +66,7 @@ include("connection.php");
             <br>
 
             <div id="searchDir"></div>
-            <ul id="people-list" style="padding: 10px;">
+            <ul id="people-list" style="padding: 10px; max-height: 230px;">
                 <?php
                 if (isset($_POST['search1'])) {
                     $name = $_POST['name'];
@@ -97,7 +97,7 @@ include("connection.php");
                             <img src="admin/user_tbl/uploads/<?php echo $row['image']; ?>" alt="">
                         </figure>
                         <div class="friendz-meta">
-                            <a href="chat.php?id=<?php echo $row['id'] ?>" title=""><?php echo $row['name'] ?></a>
+                            <a href="frnd-prof.php?id=<?php echo $row['id'] ?>" title=""><?php echo $row['name'] ?></a>
                         </div>
                     </li>
                     <?php

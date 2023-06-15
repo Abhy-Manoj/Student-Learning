@@ -5,7 +5,10 @@ include("connection.php");
 if (isset($_POST['ccc'])) {
     date_default_timezone_set('Asia/Kolkata');
     $date = date('d-m-Y H:i');
-    mysqli_query($con, "INSERT INTO chat(sid,message,date_time,userid) VALUES('$_SESSION[uid]','$_POST[msgd]','$date','$_REQUEST[id]')");
+    // Check if the message is not blank
+    if (!empty($_POST['msgd'])) {
+        mysqli_query($con, "INSERT INTO chat(sid,message,date_time,userid) VALUES('$_SESSION[uid]','$_POST[msgd]','$date','$_REQUEST[id]')");
+    }
     header("location:chat.php?id=$_REQUEST[id]");
 }
 ?>
@@ -21,7 +24,7 @@ if (isset($_POST['ccc'])) {
             padding: 10px;
             background-color: #f5f5f5;
             border-radius: 10px;
-            max-height: 400px;
+            max-height: 350px;
             overflow-y: auto;
             flex-direction: column;
             display: flex;
@@ -71,7 +74,7 @@ if (isset($_POST['ccc'])) {
         }
 
         .message-time {
-            font-size: 9px;
+            font-size: 8px;
             color: #777;
             margin-bottom: 10px;
         }
@@ -143,17 +146,11 @@ if (isset($_POST['ccc'])) {
             background-color: #f5f5f5;
         }
     </style>
-    <script>
-        window.onload = function () {
-            var chatWrapper = document.getElementById('message');
-            chatWrapper.scrollTop = chatWrapper.scrollHeight;
-        };
-    </script>
 
 </head>
 
 <body>
-    <div class="central-meta item">
+    <div class="central-meta item" style="border-radius: 10px;">
         <div class="user-post">
             <div class="friend-info">
                 <section class="section">
@@ -164,13 +161,12 @@ if (isset($_POST['ccc'])) {
                                 <?php
                                 $sel = mysqli_query($con, "SELECT * FROM `student` WHERE id='$_REQUEST[id]'");
                                 while ($row = mysqli_fetch_array($sel)) {
-                                    ?>
+                                ?>
                                     <div class="chat-header">
-                                        <img class="chat-header-image profile-image"
-                                            src="admin/user_tbl/uploads/<?php echo $row['image']; ?>" alt="Profile Image">
+                                        <img class="chat-header-image profile-image" src="admin/user_tbl/uploads/<?php echo $row['image']; ?>" alt="Profile Image">
                                         <a href="view.php?id=<?php echo $row['id'] ?>" title=""><?php echo $row['name'] ?></a>
                                     </div>
-                                    <?php
+                                <?php
                                 }
                                 ?>
                                 <!-- Chat Messages -->
@@ -180,43 +176,52 @@ if (isset($_POST['ccc'])) {
                                     $result = mysqli_query($con, $sel);
                                     $rows = mysqli_num_rows($result);
                                     $prevDate = "";
-                                    while ($row = mysqli_fetch_array($result)) {
-                                        $time24Hr = $row['date_time'];
-                                        $time12Hr = date("h:i A", strtotime($time24Hr));
-                                        $messageDate = date("d-m-Y", strtotime($time24Hr));
+                                    if ($rows == 0 && !isset($_REQUEST['id'])) {
+                                        echo "<h7 style='color:gray; opacity:50%;'>Select any chat to start messaging!</h7>";
+                                    } else if ($rows == 0 && isset($_REQUEST['id'])) {
+                                        echo "<h7 style='color:gray; opacity:50%;'>Start messaging!</h7>";
+                                    } else {
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            $time24Hr = $row['date_time'];
+                                            $time12Hr = date("h:i A", strtotime($time24Hr));
+                                            $messageDate = date("d-m-Y", strtotime($time24Hr));
 
-                                        if ($prevDate != $messageDate) {
-                                            echo "<div class='message-date'>$messageDate</div>";
-                                            $prevDate = $messageDate;
-                                        }
+                                            if ($prevDate != $messageDate) {
+                                                echo "<div class='message-date'>$messageDate</div>";
+                                                $prevDate = $messageDate;
+                                            }
 
-                                        if ($row['sid'] == $_SESSION['uid']) {
-                                            echo "<div class='message-wrapper sent' style='text-align:right'>";
-                                            echo "<div class='message-bubble1 sent-bubble'>";
-                                            echo "<span class='message-text'>$row[message]</span>";
-                                            echo "</div>";
-                                            echo "</div>";
-                                            echo "<span class='message-time' style='text-align:right'>$time12Hr</span>";
-                                        } else {
-                                            echo "<div class='message-wrapper received'>";
-                                            echo "<div class='message-bubble received-bubble'>";
-                                            echo "<span class='message-text'>$row[message]</span>";
-                                            echo "</div>";
-                                            echo "</div>";
-                                            echo "<span class='message-time'>$time12Hr</span>";
+                                            if ($row['sid'] == $_SESSION['uid']) {
+                                                echo "<div class='message-wrapper sent' style='text-align:right'>";
+                                                echo "<div class='message-bubble1 sent-bubble'>";
+                                                echo "<span class='message-text'>$row[message]</span>";
+                                                echo "</div>";
+                                                echo "</div>";
+                                                echo "<span class='message-time' style='text-align:right'>$time12Hr&nbsp</span>";
+                                            } else {
+                                                echo "<div class='message-wrapper received'>";
+                                                echo "<div class='message-bubble received-bubble'>";
+                                                echo "<span class='message-text'>$row[message]</span>";
+                                                echo "</div>";
+                                                echo "</div>";
+                                                echo "<span class='message-time'>&nbsp$time12Hr</span>";
+                                            }
                                         }
                                     }
                                     ?>
                                 </div>
                                 <!-- Message Input -->
-                                <form action="" method="post">
-                                    <div class="input-wrapper">
-                                        <input type="text" class="message-input" name="msgd" placeholder=" Message"
-                                            required>
-                                        <button type="submit" class="send-button" name="ccc"><i
-                                                class="fa fa-paper-plane"></i></button>
-                                    </div>
-                                </form>
+                                <?php
+                                if ($rows > 0 || isset($_REQUEST['id'])) {
+                                    // Display the message input form if chat messages exist
+                                    echo "<form action='' method='post'>";
+                                    echo "<div class='input-wrapper'>";
+                                    echo "<input type='text' class='message-input' name='msgd' placeholder=' Message' required>";
+                                    echo "<button type='submit' class='send-button' style='padding-left:10px;' name='ccc'><i class='fa fa-paper-plane'></i></button>";
+                                    echo "</div>";
+                                    echo "</form>";
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -225,33 +230,46 @@ if (isset($_POST['ccc'])) {
         </div>
     </div>
 </body>
-<!-- JavaScript code for real-time chat -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
     var chatWrapper = document.getElementById('message');
-    var isScrolledToBottom = chatWrapper.scrollHeight - chatWrapper.clientHeight <= chatWrapper.scrollTop + 1;
-    function fetchMessages() 
-    {
+
+    function fetchMessages() {
         $.ajax({
             url: 'fetch_messages.php',
             type: 'GET',
-            data: { id: <?php echo $_REQUEST['id']; ?> },
-            success: function (response) 
-            {
-                // Check if the user is scrolled to the bottom before appending new messages
-                var shouldScrollToBottom = isScrolledToBottom;
+            data: {
+                id: <?php echo $_REQUEST['id']; ?>
+            },
+            success: function(response) {
+                // Check if the user is already at the bottom before appending new messages
+                var isScrolledToBottom = chatWrapper.scrollHeight - chatWrapper.clientHeight <= chatWrapper.scrollTop + 1;
 
                 // Append the new messages to the chat wrapper
                 $('#message').html(response);
 
                 // Scroll to the bottom of the chat wrapper if the user was already at the bottom
-                if (shouldScrollToBottom) 
-                {
+                if (isScrolledToBottom) {
                     chatWrapper.scrollTop = chatWrapper.scrollHeight;
                 }
             }
         });
     }
+
     setInterval(fetchMessages, 1000);
+
+    // Scroll to the bottom of the chat wrapper on page load
+    window.onload = function() {
+        chatWrapper.scrollTop = chatWrapper.scrollHeight;
+    };
+
+    // Disable form submission if the message is blank
+    document.querySelector('form').addEventListener('submit', function(event) {
+        var messageInput = document.querySelector('.message-input');
+        if (messageInput.value.trim() === '') {
+            event.preventDefault();
+        }
+    });
 </script>
+
 </html>

@@ -16,7 +16,7 @@ include("header.php");
 							
 							
 							<div class="col-lg-6">
-								<div class="central-meta">
+								<div class="central-meta" style="border-radius: 10px;">
 									<div class="editing-info">
 										<h5 class="f-title"><i class="ti-info-alt"></i>Upload Certicates</h5>
 
@@ -68,7 +68,7 @@ include("header.php");
 									
 								</div>
 
-									<div class="central-meta">
+								<div class="central-meta" style="border-radius: 10px;">
 									<div class="groups">
 										<span><i class="fa fa-file-text-o"></i> My Certificates</span>
 									</div>
@@ -80,7 +80,6 @@ include("header.php");
 										{			
 											//echo $row['image'];
 										?>
-										
 										<li>
 											<div class="f-page">
 												<figure>
@@ -88,7 +87,9 @@ include("header.php");
 												</figure>
 												<div class="page-infos">
 													<h5><a href="#" title=""><?php echo $row['title']; ?></a></h5>
-													<span><a href="#" title=""><?php echo $row['description']; ?></a></span>
+													<span><a href="#" title=""><?php echo $row['description']; ?></a>
+													<a href="dlt_certi.php?id=<?php echo $row['id'] ?>" title="" class="add-butn danger " data-ripple="" style="border-radius: 5px; margin-right:6px; background: #cd0808;"><i class="ti-trash"></i></a>
+													</span>
 												</div>
 											</div>
 										</li>
@@ -98,11 +99,7 @@ include("header.php");
 										?>
 									</ul>
 								</div><!-- photos -->
-							
 							</div>
-							
-							
-							
 							
 							<div class="col-lg-3">
 								<aside class="sidebar static">
