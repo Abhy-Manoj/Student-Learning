@@ -19,7 +19,6 @@ $password=$_POST['password'];
 		echo $sel;
 		$result = mysqli_query($con,$sel) or die(mysql_error());
 		$row=mysqli_fetch_array($result);
-		//echo $row['type'];
 		
 		if($row['type']=="student")
 		{	
@@ -44,7 +43,6 @@ $password=$_POST['password'];
 		elseif(($row['type']=="staff"))
 		{
 			$query = "SELECT * FROM staff WHERE staff_email='$username' and staff_password='$password'";	 
-			//echo $query;
 			$data=mysqli_query($con,$query);
 			$count=mysqli_num_rows($data);
 			if($count==1)
@@ -61,7 +59,6 @@ $password=$_POST['password'];
 			}
 			else
 			{
-				//echo "Error : ".mysqli_error($con);
 				header("location:login.php?st=fail");
 			}
 			
