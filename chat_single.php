@@ -7,15 +7,9 @@ if (isset($_POST['ccc'])) {
     $date = date('d-m-Y H:i');
     // Check if the message is not blank
     if (!empty($_POST['msgd'])) {
-        $uid = $_SESSION['uid']; // Retrieve the value of $_SESSION['uid']
-        $msg = $_POST['msgd']; // Retrieve the value of $_POST['msgd']
-        $sid = $_REQUEST['id']; // Retrieve the value of $_REQUEST['id']
-
-        $query = "INSERT INTO chat (sid, message, date_time, userid) VALUES ('$sid', '$msg', '$date', '$uid')";
-        mysqli_query($con, $query);
+        mysqli_query($con, "INSERT INTO chat(sid,message,date_time,userid) VALUES('$_SESSION[uid]','$_POST[msgd]','$date','$_REQUEST[id]')");
     }
-    header("Location: chat.php?id=$sid"); // Redirect to the chat page of the corresponding user
-        exit();
+    header("location:chat.php?id=$_REQUEST[id]");
 }
 ?>
 
