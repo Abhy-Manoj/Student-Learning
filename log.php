@@ -34,7 +34,6 @@ $password=$_POST['password'];
 				
 				$_SESSION['user']='student';
 				$_SESSION['uid']=$cc['id'];
-				header("location:index.php");
 			}
 			else
 			{
