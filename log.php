@@ -16,7 +16,6 @@ $password=$_POST['password'];
 	{
 
 		$sel="SELECT * FROM login WHERE username='$username' and password='$password'";
-		echo $sel;
 		$result = mysqli_query($con,$sel) or die(mysql_error());
 		$row=mysqli_fetch_array($result);
 		
