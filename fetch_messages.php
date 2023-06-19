@@ -36,7 +36,7 @@ if (isset($_GET['id'])) {
             $messageBubble .= "<div class='message-bubble1 sent-bubble'>";
             $messageTime .= "<span class='message-time' style='text-align:right'>$time12Hr&nbsp</span>";
         } else {
-            $messageWrapper .= "<div class='message-wrapper received'>";
+            $messageWrapper .= "<div class='message-wrapper received' style='text-align:left'>";
             $messageBubble .= "<div class='message-bubble received-bubble'>";
             $messageTime .= "<span class='message-time'>&nbsp$time12Hr</span>";
         }
