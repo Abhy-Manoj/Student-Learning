@@ -14,7 +14,8 @@ if (isset($_POST['ccc'])) {
         $query = "INSERT INTO chat (sid, message, date_time, userid) VALUES ('$sid', '$msg', '$date', '$uid')";
         mysqli_query($con, $query);
     }
-    header("location: chat.php?id=$_REQUEST[id]");
+    header("Location: chat.php?id=$sid"); // Redirect to the chat page of the corresponding user
+        exit();
 }
 ?>
 
