@@ -42,7 +42,6 @@ include("header.php");
 									<?php
 										if(isset($_POST['submit']))
 										{
-											echo "zcc";
 										$title=$_POST['title'];
 										$des=$_POST['des'];
 										

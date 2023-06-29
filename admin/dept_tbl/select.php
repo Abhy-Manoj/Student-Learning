@@ -148,7 +148,7 @@ $i = 0;
 			
 			<td><a href='update.php?id=$id'>Update</a></td>
 			
-			<td><a href='?del_id=$id' onclick='return rem()'>Del</a></td>
+			<td><a href='?del_id=$id' style='color: red;' onclick='return rem()'>Del</a></td>
 		
 			</tr>";
 		}

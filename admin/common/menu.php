@@ -13,7 +13,8 @@ $title="";
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title></title>
+	<title>Admin - Student Learning</title>
+    <link rel="icon" href="\student_learning\admin\assets\img\adi.png" type="image/png" sizes="16x16"> 
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -47,14 +48,13 @@ $title="";
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-            <br/> <br/>
             
-               <a href="../dashboard/dashboard.php" style="font-size: 25px;">STUDENT <br>LEARNING</a> 
+            <a href="../dashboard/dashboard.php">
+      <img src="../dashboard/image.png" alt="Student Learning" style="width: 100%; max-width: 300px;"></a>
                  
             </div>
 
             <ul class="nav">
-                
                 
                 <li >
                     <a href="../dashboard/dashboard.php">
@@ -63,9 +63,6 @@ $title="";
                     </a>
                 </li>
                 
-                
-               
-
                  <li>
                     <a href="../logout.php">
                         <i class="pe-7s-power"></i>

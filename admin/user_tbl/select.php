@@ -177,9 +177,9 @@ $i = 0;
 
 			echo "
 			
-			<td><a href='update.php?id=$id'>Update</a></td>
+			<td><a href='update.php?id=$id'><i class='pe-7s-add-user' style='font-size: 24px;'></i></a></td>
 			
-			<td><a href='?del_id=$id' onclick='return rem()'>Del</a></td>
+			<td><a href='?del_id=$id' onclick='return rem()' style='color: red;'><i class='pe-7s-delete-user' style='font-size: 24px;'></i></a></td>
 		
 			</tr>";
 

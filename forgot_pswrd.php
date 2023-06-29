@@ -23,13 +23,15 @@
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 				<div class="land-featurearea">
 					<div class="land-meta">
-						<h1>STUDENT LEARNING</h1>
-						<p>
-							An Exclusive Learning Platform For ASIET Students.
-						</p>
 						<div class="">
 							<span><img src="images/adi.png" alt=""></span>
 						</div>
+						<div class="">
+							<span><img src="images/creslina-regular.png" alt="Image" width="500" height="400"></span>
+						</div>
+						<p>
+							An Exclusive Learning Platform For ASIET Students.
+						</p>
 					</div>	
 				</div>
 			</div>

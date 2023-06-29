@@ -198,7 +198,7 @@ $row1 = mysqli_fetch_array($sel1);
 												$sel = mysqli_query($con, "SELECT * FROM `project` where uid='$_REQUEST[id]' and status='public' ORDER BY date DESC");
 											} else {
 
-												$sel = mysqli_query($con, "SELECT * FROM `project` where status='public' and `uid` != '$_SESSION[uid]' ORDER BY date DESC");
+												$sel = mysqli_query($con, "SELECT * FROM `project` where status='public' and `uid` != '$_SESSION[uid]' ORDER BY id DESC");
 											}
 											$cc = mysqli_num_rows($sel);
 											//echo $cc;

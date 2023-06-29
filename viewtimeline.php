@@ -91,7 +91,7 @@ $row1 = mysqli_fetch_array($sel1);
 																					class="ti-pencil-alt"></i></a>
 																		</li>
 																		<li>
-																			<a href="viewtimeline.php?delete_id=<?php echo $blogRow['id']; ?>"
+																			<a href="dlt_blog.php?delete_id=<?php echo $blogRow['id']; ?>"
 																				class="add-butn danger"
 																				style="margin-right:45px; background: #cd0808; border-radius: 5px;"
 																				onclick="return confirm('Are you sure you want to delete this blog?')"><i
@@ -113,7 +113,7 @@ $row1 = mysqli_fetch_array($sel1);
 										<div class="tab-pane fade" id="projects" role="tabpanel"
 											aria-labelledby="projects-tab">
 											<?php
-											$sel = mysqli_query($con, "SELECT * FROM `project` WHERE `uid`='$_SESSION[uid]' ORDER BY `date` DESC");
+											$sel = mysqli_query($con, "SELECT * FROM `project` WHERE `uid`='$_SESSION[uid]' ORDER BY id DESC");
 
 											while ($row = mysqli_fetch_array($sel)) {
 												$sel1 = mysqli_query($con, "SELECT * FROM `student` WHERE `id`='$row[uid]'");
@@ -153,21 +153,18 @@ $row1 = mysqli_fetch_array($sel1);
 																			<li>
 																				<a href="project_single.php?id=<?php echo $row['id'] ?>"
 																					title="" class="add-butn"  style="border-radius: 5px;"
-																					data-ripple=""><i
-																						class="ti-eye"></i></a>
+																					data-ripple=""><i class="ti-eye"></i></a>
 																			</li>
 																			<li>
 																				<a href="editproject.php?id=<?php echo $row['id'] ?>"
 																					title="" class="add-butn more-action" style="border-radius: 5px; margin-right:15px"
-																					data-ripple=""><i
-																						class="ti-pencil-alt"></i></a>
+																					data-ripple=""><i class="ti-pencil-alt"></i></a>
 																			</li>
 																			<li>
-																				<a href="viewtimeline.php?delete_id=<?php echo $row['id'] ?>"
-																					title="" class="add-butn danger"
+																				<a href="dlt_prj.php?id=<?php echo $row['id'] ?>"title="" class="add-butn danger"
 																					style="margin-right:45px;background: #cd0808; border-radius: 5px;"
-																					onclick="return confirm('Are you sure you want to delete this project?')"><i
-																						class="ti-trash"></i></a>
+																					onclick="return confirm('Are you sure you want to delete this project?')">
+																					<i class="ti-trash"></i></a>
 																			</li>
 																		</ul>
 																	</div>
@@ -193,7 +190,7 @@ $row1 = mysqli_fetch_array($sel1);
 									</div>
 									<ul class="liked-pages" style="width:100%">
 										<?php
-										if ($_SESSION[uid]) {
+										if ($_SESSION['uid']) {
 											$sel = mysqli_query($con, "SELECT * FROM `certficates` where user_id='$_SESSION[uid]'");
 											while ($row = mysqli_fetch_array($sel)) {
 												?>

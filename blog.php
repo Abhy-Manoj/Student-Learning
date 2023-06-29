@@ -26,7 +26,7 @@ include("header.php");
 											  <label class="control-label" for="input">Title</label><i class="mtrl-select"></i>
 											</div>
 											<div class="form-group">	
-											  <input type="file" required="required" name="images"/>
+											  <input type="file" name="images"/>
 											</div>
 											<div class="form-group">	
 											  <textarea rows="4" id="textarea" required="required" name="des" ></textarea>

@@ -68,7 +68,7 @@ include("connection.php");
 				
 			}
 			else{
-				$sel=mysqli_query($con,"SELECT * FROM project where status='public' order by date desc");
+				$sel=mysqli_query($con,"SELECT * FROM project where status='public' ORDER BY id DESC");
 			}
 				
 			while($row=mysqli_fetch_array($sel))
@@ -92,13 +92,13 @@ include("connection.php");
 						<div class="pepl-info">
 							<h4><a title=""><?php echo $row['title'] ?></a></h4>
 							<span><?php echo $row1['name'] ?> | published: <?php echo $row['date'] ?></span>
-							<a href="project_single.php?id=<?php echo $row['id'] ?>" title="" class="add-butn" style="border-radius: 3px;" data-ripple=""><i class="ti-eye"></i></a>
+							<a href="project_single.php?id=<?php echo $row['id'] ?>" title="" class="add-butn" style="border-radius: 3px; margin-top: 20px;" data-ripple=""><i class="ti-eye"></i></a>
 							<?php
 							if($_SESSION['uid']==$row1['id'])
 							{
 							?>
-							<a href="editproject.php?id=<?php echo $row['id'] ?>" title="" class="add-butn more-action" style="border-radius: 5px;" data-ripple=""><i class="ti-pencil-alt"></i></a>
-							<a href="delete.php?id=<?php echo $row['id'] ?>" title="" class="add-butn danger " data-ripple="" style="margin-right:45px; border-radius: 5px; background: #cd0808;"><i class="ti-trash"></i></a>
+							<a href="editproject.php?id=<?php echo $row['id'] ?>" title="" class="add-butn more-action" style="border-radius: 5px; margin-top: 20px;" data-ripple=""><i class="ti-pencil-alt"></i></a>
+							<a href="delete.php?id=<?php echo $row['id'] ?>" title="" class="add-butn danger " data-ripple="" style="margin-right:45px; margin-top: 20px; border-radius: 5px; background: #cd0808;"><i class="ti-trash"></i></a>
 							<?php
 							}
 							else{

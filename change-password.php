@@ -40,7 +40,6 @@ $row=mysqli_fetch_array($sel);
 										  <input type="password" required="required"/>
 										  <label class="control-label" for="input">Confirm password</label><i class="mtrl-select"></i>
 										</div>
-										<a class="forgot-pwd underline" title="" href="#">Forgot Password?</a>
 										<div class="submit-btns">
 											<button type="button" class="mtr-btn"><span>Cancel</span></button>
 											<button type="button" class="mtr-btn"><span>Update</span></button>

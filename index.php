@@ -7,11 +7,24 @@ if ($_SESSION['user']=="")
     session_start();
     session_unset();
     session_destroy();
-	  header("location:login.php");
+    header("location:login.php");
 }
 ?>
 
 <style>
+/* Add CSS media queries to make the page responsive */
+@media (max-width: 767px) {
+    .col-lg-6.fixed-height {
+        max-height: none;
+        height: auto;
+        overflow-y: visible;
+    }
+
+    .col-lg-3 {
+        margin-top: 20px;
+    }
+}
+
 .col-lg-6.fixed-height {
     max-height: 528px;
     overflow-y: auto;
@@ -36,34 +49,34 @@ if ($_SESSION['user']=="")
 }
 </style>
 
-	<section>
-		<div class="gap gray-bg" style='padding:30px;'>
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="row" id="page-contents">
-							<?php 
-							include("sidebar.php"); 
-							?>
-							<div class="col-lg-6 fixed-height">
-								<?php 
-								include("feed.php"); 
-								?>
-							</div><!-- centerl meta -->
-							<div class="col-lg-3">
-								<aside class="sidebar static">
-								
-									<?php
-									include("friends.php")
-									?>
-								</aside>
-							</div><!-- sidebar -->
-						</div>	
-					</div>
-				</div>
-			</div>
-		</div>	
-	</section>
+<section>
+    <div class="gap gray-bg" style='padding:30px;'>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row" id="page-contents">
+                        <?php 
+                        include("sidebar.php"); 
+                        ?>
+                        <div class="col-lg-6 fixed-height">
+                            <?php 
+                            include("feed.php"); 
+                            ?>
+                        </div><!-- centerl meta -->
+                        <div class="col-lg-3">
+                            <aside class="sidebar static">
+                            
+                                <?php
+                                include("friends.php")
+                                ?>
+                            </aside>
+                        </div><!-- sidebar -->
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>  
+</section>
 
 <?php
 include("footer.php");

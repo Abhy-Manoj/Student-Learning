@@ -24,14 +24,14 @@
 				<div class="land-featurearea">
 					<div class="land-meta">
 					<div class="">
+						<span><img src="images/adi.png" alt=""></span>
+						</div>
+						<div class="">
 							<span><img src="images/creslina-regular.png" alt="Image" width="500" height="400"></span>
 						</div>
 						<p>
 							An Exclusive Learning Platform For ASIET Students.
-						</p>
-						<div class="">
-							<span><img src="images/adi.png" alt=""></span>
-						</div>
+						</p>	
 					</div>	
 				</div>
 			</div>

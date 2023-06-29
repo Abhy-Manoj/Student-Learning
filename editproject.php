@@ -13,7 +13,6 @@ include("header.php");
 							include("sidebar.php"); 
 							if(isset($_POST['submit']))
 								{
-									echo "zcc";
 								$title=$_POST['title'];
 								$keywords=$_POST['keywords'];
 								$abstract=$_POST['abstract'];

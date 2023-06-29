@@ -124,7 +124,7 @@ body,
   position: relative; }
 
 a {
-  color:#C30; }
+  color:rgb(5, 158, 234); }
   a:hover, a:focus {
     color: #42d0ed;
     text-decoration: none; }

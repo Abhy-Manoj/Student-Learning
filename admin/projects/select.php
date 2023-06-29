@@ -185,7 +185,7 @@ $row2 =mysqli_fetch_array($result2);
 			echo "
 			
 			
-			<td><a href='?del_id=$id' onclick='return rem()'>Del</a></td>
+			<td><a href='?del_id=$id' style='color: red;' onclick='return rem()'>Del</a></td>
 		
 			</tr>";
 		

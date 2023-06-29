@@ -90,17 +90,21 @@ if($_REQUEST['rid'])
 					while ($row2 = mysqli_fetch_array($sel2)) {
 						$sel3 = mysqli_query($con, "SELECT * FROM `student` WHERE `id`='$row2[user_id]'");
 						$row3 = mysqli_fetch_array($sel3);
+						$isCurrentUserComment = ($row2['user_id'] == $_SESSION['uid']);
 					?>
 						<li>
 							<div class="we-comment" style="width:650px;">
+							<?php if ($isCurrentUserComment || $row1['id'] == $_SESSION['uid']) { ?>
+									<a href="dlt_cmt.php?id=<?php echo $row2['id'] ?>" title="" class="add-butn danger " data-ripple="" style="border-radius: 5px; margin-right:6px; background: #cd0808;" onclick="return confirm('Are you sure you want to delete this project?')"><i class="ti-trash"></i></a>
+								<?php } ?>
 								<div class="coment-head">
 									<h5><?php
-                                if ($row3['id'] == $_SESSION['uid']) {
-                                    echo  $row3['name'] . '</a>';
-                                } else {
-                                    echo '<a href="frnd-prof.php?id=' . $row3['id'] . '" title="">' . $row3['name'] . '</a>';
-                                }
-                                ?></h5>
+										if ($row3['id'] == $_SESSION['uid']) {
+											echo  $row3['name'] . '</a>';
+										} else {
+											echo '<a href="frnd-prof.php?id=' . $row3['id'] . '" title="">' . $row3['name'] . '</a>';
+										}
+										?></h5>
 									<span><?php echo $row2['date'] ?></span>
 									<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
 								</div>
@@ -171,7 +175,7 @@ if($_REQUEST['rid'])
 								<div class="pepl-info">
 									<h4><a title=""><?php echo $row['title'] ?></a></h4>
 									<span><?php echo $row1['name'] ?> | published: <?php echo $row['date'] ?></span>
-									<a href="project_single.php?id=<?php echo $row['id']; ?>" title="" class="add-butn" data-ripple="" style="border-radius: 5px;">View More </a>
+									<a href="project_single.php?id=<?php echo $row['id']; ?>" title="" class="add-butn" data-ripple="" style="border-radius: 5px; margin-top: 25px;">View More </a>
 								</div>
 							</div>
 						</li>

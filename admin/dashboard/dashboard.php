@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Admin - Student Learning</title>
-    <link rel="icon" href="\student_learning\admin\assets\img\adi.png" type="image/png" sizes="16x16"> 
-
 </head><?php
 error_reporting(0);
 $status=$_REQUEST['status'];
@@ -86,10 +83,10 @@ background:#666;
                     <div class="col-md-10">
                         <div class="card">
                             <div class="header">
-                                                             
+                             <p>Contents</p>                                
                             </div>
                             <div class="content all-icons">
-                                <div class="row" style=" /*background-image: url(Bugs.jpg);*/ ">
+                                <div class="row">
                                            
                               
                                 <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
@@ -99,21 +96,23 @@ background:#666;
                                   </div>
 								
                                    <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
-                                <a href="../dept_tbl/form.php">    <div class="font-icon-detail"><i class="pe-7s-portfolio"></i>
+                                <a href="../dept_tbl/select.php">    <div class="font-icon-detail"><i class="pe-7s-portfolio"></i>
                                       <input type="text" value="DEPARTMENTS">
                                     </div></a>
                                   </div> 
+                                  
+                                  <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+                                <a href="../blogs/select.php">    <div class="font-icon-detail"><i class="pe-7s-display2"></i>
+                                      <input type="text" value="BLOGS">
+                                    </div></a>
+                                  </div>
 								  
 								  <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
                                 <a href="../projects/select.php">    <div class="font-icon-detail"><i class="pe-7s-note2"></i>
                                       <input type="text" value="PROJECTS">
                                     </div></a>
                                   </div> 
-
-								 
-
-                                  
-
+                               
                                 </div>
 
                             </div>
