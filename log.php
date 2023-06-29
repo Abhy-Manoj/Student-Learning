@@ -40,8 +40,6 @@ $password=$_POST['password'];
 				header("location:login.php?st=fail");
 			}
 		}
-<<<<<<< HEAD
-=======
 		elseif(($row['type']=="staff"))
 		{
 			$query = "SELECT * FROM staff WHERE staff_email='$username' and staff_password='$password'";	 
@@ -65,7 +63,6 @@ $password=$_POST['password'];
 			}
 			
 		}
->>>>>>> 04be88f81a80a454261a281010990c27b854f961
 		else{
 			header("location:login.php?st=fail");
 		}
