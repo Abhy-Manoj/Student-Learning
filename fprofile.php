@@ -19,6 +19,20 @@ $sel1 = mysqli_query($con, "SELECT * FROM `bio` WHERE `uid`='$_REQUEST[id]'");
 $row1 = mysqli_fetch_array($sel1);
 ?>
 
+<style>
+    .btn-primary {
+        color: #0069d9;
+        background-color: #ffff;
+        border-color: #0069d9
+    }
+
+    .btn-primary:hover {
+        color: #fff;
+        background-color: #0069d9;
+        border-color: #0062cc
+    }
+</style>
+
 <section>
 	<div class="gap gray-bg">
 		<div class="container-fluid">
