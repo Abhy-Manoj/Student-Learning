@@ -40,32 +40,6 @@ $password=$_POST['password'];
 				header("location:login.php?st=fail");
 			}
 		}
-<<<<<<< HEAD
-=======
-		elseif(($row['type']=="staff"))
-		{
-			$query = "SELECT * FROM staff WHERE staff_email='$username' and staff_password='$password'";	 
-			$data=mysqli_query($con,$query);
-			$count=mysqli_num_rows($data);
-			if($count==1)
-			{
-				$query1 = "SELECT * FROM staff WHERE staff_email='$username' and staff_password='$password'";
-				echo $query1;
-				$datas=mysqli_query($con,$query1);
-				$cc=mysqli_fetch_array($datas);
-				echo $cc['name'];
-				
-				$_SESSION['user']='staff';
-				$_SESSION['uid']=$cc['id'];
-				header("location:web/dashboard/dashboard.php");
-			}
-			else
-			{
-				header("location:login.php?st=fail");
-			}
-			
-		}
->>>>>>> 04be88f81a80a454261a281010990c27b854f961
 		else{
 			header("location:login.php?st=fail");
 		}

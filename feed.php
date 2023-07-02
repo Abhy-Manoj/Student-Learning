@@ -139,7 +139,7 @@ while ($row = mysqli_fetch_array($sel)) {
 			margin-bottom: 5px;
 		}
 	</style>
-	<div class="central-meta item" style="border-radius: 10px; padding-bottom: 20px">
+	<div class="central-meta item" style="border-radius: 10px; padding-bottom: 5px">
 		<div class="user-post">
 			<div class="friend-info">
 				<figure>
@@ -166,7 +166,7 @@ while ($row = mysqli_fetch_array($sel)) {
 						<button class="like-button__btn <?php echo $isLiked ? 'liked' : ''; ?>" onclick="handleLikeButtonClick(<?php echo $row['id']; ?>, this)">
 							<i class="fa fa-thumbs-o-up"></i> <?php echo $isLiked ? 'Liked' : 'Like'; ?>
 						</button>
-						<button class="comment-button__btn" onclick="showCommentForm(<?php echo $row['id']; ?>)"><i class="fa fa-comment-o"></i> Comment</button> <!-- Moved comment button here -->
+						<button class="comment-button__btn" onclick="showCommentForm(<?php echo $row['id']; ?>)"><i class="fa fa-comment-o"></i> Comment</button>
 					</div>
 					<div id="comment-section-<?php echo $row['id']; ?>" style="font-size: 14px"; class="comment-section"></div>
 				</div>
@@ -248,7 +248,7 @@ while ($row = mysqli_fetch_array($sel)) {
 			var commentForm = document.createElement('div');
 			commentForm.innerHTML = '<div class="comment-form">' +
 				'<textarea placeholder="Write a comment..." required></textarea>' +
-				'<button type="submit" onclick="postComment(' + postId + ', this)">Post</button>' +
+				'<button type="submit" onclick="postComment(' + postId + ', this)"><i class="fa fa-paper-plane"></i>Post</button>' +
 				'</div>';
 			commentSection.appendChild(commentForm);
 
@@ -293,7 +293,7 @@ while ($row = mysqli_fetch_array($sel)) {
 				if (xhr.status === 200) {
 					// Clear the comment form and fetch updated comments
 					commentInput.value = '';
-					var commentSection = commentForm.parentNode;
+					var commentSection = commentForm.parentNode.parentNode;
 					commentSection.innerHTML = '';
 					fetchComments(postId, commentSection);
 				}

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2023 at 07:47 PM
+-- Generation Time: Jun 29, 2023 at 04:57 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `blog` (
   `description` text NOT NULL,
   `date` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `blog`
@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `chat` (
   `reply` text NOT NULL,
   `reply_date` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=143 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=146 ;
 
 --
 -- Dumping data for table `chat`
@@ -172,7 +172,10 @@ INSERT INTO `chat` (`id`, `sid`, `message`, `userid`, `date_time`, `reply`, `rep
 (139, 5, 'hi', 6, '16-06-2023 13:56', '', ''),
 (140, 5, 'Hi dude', 8, '16-06-2023 13:57', '', ''),
 (141, 5, 'Hi, my name is Abhijith.', 2, '16-06-2023 15:11', '', ''),
-(142, 2, 'hello nice to meet you', 10, '19-06-2023 12:32', '', '');
+(142, 2, 'hello nice to meet you', 10, '19-06-2023 12:32', '', ''),
+(143, 1, 'Hi', 8, '20-06-2023 11:40', '', ''),
+(144, 1, 'hello nice to meet you', 5, '20-06-2023 11:49', '', ''),
+(145, 2, 'hi', 5, '20-06-2023 19:21', '', '');
 
 -- --------------------------------------------------------
 
@@ -187,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `comment` text NOT NULL,
   `date` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `comment`
@@ -195,7 +198,30 @@ CREATE TABLE IF NOT EXISTS `comment` (
 
 INSERT INTO `comment` (`id`, `user_id`, `project_id`, `comment`, `date`) VALUES
 (7, 5, 6, 'good project for disease prediction', 'April 12, 2023  19:39 PM'),
-(11, 2, 10, 'Good Project', 'May 18, 2023  09:14 AM');
+(11, 2, 10, 'Good Project', 'May 18, 2023  09:14 AM'),
+(12, 2, 13, 'Good project', 'June 22, 2023  14:28 PM');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE IF NOT EXISTS `comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `blog_id` int(11) NOT NULL,
+  `comment` text NOT NULL,
+  `date` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `user_id`, `blog_id`, `comment`, `date`) VALUES
+(1, 2, 8, 'Good work', '2023-06-22 13:09:05');
 
 -- --------------------------------------------------------
 
@@ -295,12 +321,21 @@ INSERT INTO `project` (`id`, `uid`, `title`, `keywords`, `abstract`, `file`, `da
 --
 
 CREATE TABLE IF NOT EXISTS `reaction` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(100) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `project_id` int(11) NOT NULL,
-  `action` varchar(20) NOT NULL,
+  `blog_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+
+--
+-- Dumping data for table `reaction`
+--
+
+INSERT INTO `reaction` (`id`, `user_id`, `blog_id`) VALUES
+(1, 2, 6),
+(6, 5, 4),
+(7, 2, 7),
+(11, 2, 8);
 
 -- --------------------------------------------------------
 
@@ -313,15 +348,16 @@ CREATE TABLE IF NOT EXISTS `report` (
   `user_id` int(11) NOT NULL,
   `project_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `report`
 --
 
 INSERT INTO `report` (`id`, `user_id`, `project_id`) VALUES
-(1, 5, 7),
-(2, 5, 7);
+(7, 1, 7),
+(23, 2, 8),
+(24, 2, 7);
 
 -- --------------------------------------------------------
 
