@@ -8,6 +8,8 @@ if (isset($_POST['ccc'])) {
     // Check if the message is not blank
     if (!empty($_POST['msgd'])) {
         mysqli_query($con, "INSERT INTO chat(sid,message,date_time,userid) VALUES('$_SESSION[uid]','$_POST[msgd]','$date','$_REQUEST[id]')");
+    }
+    header("location:chat.php?id=$_REQUEST[id]");
 }
 ?>
 
